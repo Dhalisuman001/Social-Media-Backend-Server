@@ -34,7 +34,10 @@ git push 'remote' 'branchname'
 #####delete branches
 git branch -d 'branchname' deletes the local branch 
 git branch -dr 'remote'/'branchname' deletes the tracking branch 
-git push 'remote' -d 'branchname' deletes the remote branch 
+git push 'remote' -d 'branchname' deletes the remote branch
+
+######branch diff cmd
+git diff remote/branchname..remote/branchname
 
 NOTE: in most cases remote is origin and branchname is not the master
  -->
