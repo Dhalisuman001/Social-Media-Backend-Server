@@ -4,7 +4,7 @@
   "description": "server for social media",
   "main": "index.js",
   "scripts": {
-    "start": "node inde.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [
