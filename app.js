@@ -1,8 +1,11 @@
 const DbConnect = require("./config/db/DbConnect");
 const express = require("express");
 const cors = require("cors");
+const UserRoute = require("./routes/UserRoute");
+const { notFound, errorHandler } = require("./middleware/error/ErrorHandler");
 const app = express();
 
+// Db Connection
 DbConnect();
 
 //regular middleware
@@ -10,9 +13,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  console.log(req.body);
-  res.send(`<h1>Hi This is default gateway ${req.body.name}</h1>`);
-});
+// User routes
+app.use("/api/user/", UserRoute);
+
+// Handeling Error
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;
