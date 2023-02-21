@@ -34,6 +34,12 @@ const UserSchema = mongoose.Schema(
     bio: {
       type: String,
     },
+
+    dob: {
+      type: Date,
+      default: "let us know your special day!",
+    },
+
     email: {
       type: String,
       required: [true, "Please enter email"],
