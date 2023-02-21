@@ -1,4 +1,4 @@
-const RegisterCtrl = require("../controller/RegisterCtrl");
+const RegisterCtrl = require("../controller/user/RegisterCtrl");
 const UserRoute = require("express").Router();
 
 UserRoute.route("/register").post(RegisterCtrl);
