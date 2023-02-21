@@ -4,7 +4,7 @@ npm init -y
 
 # installing some packages
 
-npm i express cors dotenv
+npm i express cors dotenv express
 
 # nodemon for development purpose
 

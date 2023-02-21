@@ -1,5 +1,8 @@
 const app = require("./app");
+require("dotenv").config();
 
-app.listen(4000, () => {
-  console.log(`https://localhost:${4000}`);
+let port = process.env.PORT
+
+app.listen(port, () => {
+  console.log(`https://localhost:${port}`);
 });
