@@ -4,9 +4,8 @@ const validId = require("../../utils/isValid");
 
 const FetchUserCtrl = expressAsyncHandler(async (req, res) => {
   const id = req.params.id;
-  if (!validId(id)) {
-    throw new Error("Id is't valid!");
-  }
+  validId(id);
+
   try {
     const user = await User.findById(id);
     res.json(user);
