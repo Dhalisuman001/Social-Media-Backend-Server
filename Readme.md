@@ -10,7 +10,14 @@ npm i express cors dotenv express express-async-handler
 
 npm i nodemon --save-dev
 
-<!-- 
+# Task
+
+-> Update user
+-> Fetch profile
+-> User Block
+-> user Unblock
+
+<!--
 #git branches imp cmds
 
 ##list branches
@@ -32,8 +39,8 @@ git pull 'remote' 'branchname'
 git push 'remote' 'branchname'
 
 #####delete branches
-git branch -d 'branchname' deletes the local branch 
-git branch -dr 'remote'/'branchname' deletes the tracking branch 
+git branch -d 'branchname' deletes the local branch
+git branch -dr 'remote'/'branchname' deletes the tracking branch
 git push 'remote' -d 'branchname' deletes the remote branch
 
 ###### branch diff cmd
@@ -42,7 +49,7 @@ git diff remote/branchname..remote/branchname
 ####### branch merge
 git merge 'branchname'
 
-## STEPS: 
+## STEPS:
 1. Check present working local branch
 2. Pull origin master
 3. Experiment
