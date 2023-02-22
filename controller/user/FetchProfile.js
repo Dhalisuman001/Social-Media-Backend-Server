@@ -7,9 +7,8 @@ const FetchProfileCtrl = expressAsyncHandler(async (req, res) => {
   validId(userId);
 
   try {
-    const profile = await User.findById(id);
+    const profile = await User.findById(userId);
     res.json(profile);
-    res.json(user);
   } catch (error) {
     res.status(404);
     throw new Error("Profile does not exist");
