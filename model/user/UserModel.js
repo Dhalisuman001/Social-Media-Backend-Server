@@ -107,7 +107,7 @@ UserSchema.pre("save", async function (next) {
   // Only run this function if password was moddified (not on other update functions)
   if (!this.isModified("password")) return next();
   // Hash password with strength of 10
-  this.password = bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
