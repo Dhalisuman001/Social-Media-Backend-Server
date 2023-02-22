@@ -4,7 +4,7 @@ npm init -y
 
 # installing some packages
 
-npm i express cors dotenv express express-async-handler
+npm i mongoose express cors dotenv express-async-handler bcrypt
 
 # nodemon for development purpose
 
@@ -12,7 +12,6 @@ npm i nodemon --save-dev
 
 # Task
 
--> Update user
 -> Fetch profile
 -> User Block
 -> user Unblock
