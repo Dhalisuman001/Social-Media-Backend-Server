@@ -9,6 +9,9 @@ const blockCtrl = expressAsyncHandler(async (req, res) => {
   try {
     const blockUser = await User.findByIdAndUpdate(id, {
       isBlocked: true,
+    },
+    {
+        new: true,
     });
     res.json({ success: "User is now blocked", user: blockUser });
   } catch (error) {
@@ -24,6 +27,9 @@ const unblockCtrl = expressAsyncHandler(async (req, res) => {
   try {
     const unblockUser = await User.findByIdAndUpdate(id, {
       isBlocked: false,
+    },
+    {
+        new: true,
     });
 
     res.json({
