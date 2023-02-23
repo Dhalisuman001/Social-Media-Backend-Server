@@ -13,8 +13,6 @@ npm i nodemon --save-dev
 # Task
 
 -> Fetch profile
--> User Block
--> user Unblock
 
 <!--
 #git branches imp cmds
