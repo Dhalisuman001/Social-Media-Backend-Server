@@ -13,7 +13,7 @@ UserRoute.route("/:id").get(FetchUserCtrl);
 UserRoute.route("/").get(FetchUsersCtrl);
 UserRoute.route("/updateuser/:id").post(UpdateUserCtrl);
 UserRoute.route("/profile/:id").get(FetchProfileCtrl)
-UserRoute.route("/block/:id").post(blockCtrl)
+UserRoute.route("/blocked/:id").post(blockCtrl)
 UserRoute.route("unblock/:id").post(unblockCtrl)
 
 module.exports = UserRoute;
