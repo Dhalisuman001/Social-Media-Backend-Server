@@ -3,7 +3,8 @@ const FetchUsersCtrl = require("../controller/user/FetchUsers");
 const LoginCtrl = require("../controller/user/LoginCtrl");
 const RegisterCtrl = require("../controller/user/RegisterCtrl");
 const UpdateUserCtrl = require("../controller/user/UpdateUserCtrl");
-const FetchProfileCtrl = require("../controller/user/FetchProfile")
+const FetchProfileCtrl = require("../controller/user/FetchProfile");
+const { blockCtrl, unblockCtrl } = require("../controller/user/blockCtrl");
 const UserRoute = require("express").Router();
 
 UserRoute.route("/register").post(RegisterCtrl);
@@ -12,5 +13,7 @@ UserRoute.route("/:id").get(FetchUserCtrl);
 UserRoute.route("/").get(FetchUsersCtrl);
 UserRoute.route("/updateuser/:id").post(UpdateUserCtrl);
 UserRoute.route("/profile/:id").get(FetchProfileCtrl)
+UserRoute.route("/block/:id").post(blockCtrl)
+UserRoute.route("unblock/:id").post(unblockCtrl)
 
 module.exports = UserRoute;
