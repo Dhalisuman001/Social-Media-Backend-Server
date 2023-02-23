@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const getOTP = require("../../utils/OtpGenerator");
+const crypto = require("crypto");
 
 const UserSchema = mongoose.Schema(
   {
@@ -84,7 +86,7 @@ const UserSchema = mongoose.Schema(
       type: [{ type: mongoose.Types.ObjectId, ref: "User" }],
     },
     passwordChangedAt: Date,
-    forgotPasswordToken: String,
+    changePasswordOTP: String,
     forgotPasswordTokenExpire: Date,
     active: {
       type: Boolean,
@@ -114,6 +116,19 @@ UserSchema.pre("save", async function (next) {
 //match password
 UserSchema.methods.CheckPassword = async function (user__input__password) {
   return await bcrypt.compare(user__input__password, this.password);
+};
+
+// get password otp
+UserSchema.methods.getPasswordResetOTP = async function () {
+  const OTP = getOTP();
+  this.changePasswordOTP = crypto
+    .createHash("sha256")
+    .update(OTP)
+    .digest("hex");
+  this.forgotPasswordTokenExpire = Date.now() + 10 * 60 * 1000;
+
+  // this.changePasswordOTP = crypto.createHash("sha256").update();
+  return OTP;
 };
 
 const User = mongoose.model("User", UserSchema);
