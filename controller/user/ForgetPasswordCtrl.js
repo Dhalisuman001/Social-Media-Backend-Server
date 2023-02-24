@@ -13,7 +13,7 @@ const ForgetPasswordCtrl = expressAsyncHandler(async (req, res) => {
   try {
     const OTP = await user.getPasswordResetOTP();
     await user.save();
-    const body = `This is your 6 digit OTP ${OTP} to reset password, it will expire within 10 min`;
+    const body = `This is your 6 digit OTP ${OTP} to reset password, it will expire within 5 minutes`;
 
     const msg = {
       to: email,
