@@ -14,6 +14,10 @@ npm i nodemon --save-dev
 
 -> Fetch profile
 
+# Email
+
+socialmediahelp.11919@gmail.com
+
 <!--
 #git branches imp cmds
 
