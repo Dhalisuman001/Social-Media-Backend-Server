@@ -4,7 +4,7 @@ npm init -y
 
 # installing some packages
 
-npm i mongoose express cors dotenv express-async-handler bcrypt
+npm i mongoose express cors dotenv express-async-handler bcrypt crypto cloudinary multer @sendgrid/mail sharp
 
 # nodemon for development purpose
 
@@ -12,7 +12,14 @@ npm i nodemon --save-dev
 
 # Task
 
--> Fetch profile
+-> User Delete
+-> User Dectivate
+-> User Activate
+-> Update Password
+-> Hashtag model
+-> Authentication
+-> User Following
+-> User Unfollowing
 
 # Email
 
