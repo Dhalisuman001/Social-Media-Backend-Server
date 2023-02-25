@@ -67,8 +67,8 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    verificationToken: String,
-    verificationTokenExpire: Date,
+    emailVerificationOTP: String,
+    emailVerificationOTPExpire: Date,
 
     viewedBy: {
       type: [
@@ -125,9 +125,21 @@ UserSchema.methods.getPasswordResetOTP = async function () {
     .createHash("sha256")
     .update(OTP)
     .digest("hex");
-  this.forgotPasswordTokenExpire = Date.now() + 10 * 60 * 1000;
+  this.forgotPasswordTokenExpire = Date.now() + 5 * 60 * 1000;
 
   // this.changePasswordOTP = crypto.createHash("sha256").update();
+  return OTP;
+};
+
+// get Email Verification
+UserSchema.methods.getEmailVerificationOTP = async function () {
+  const OTP = getOTP();
+  this.emailVerificationOTP = crypto
+    .createHash("sha256")
+    .update(OTP)
+    .digest("hex");
+  this.emailVerificationOTPExpire = Date.now() + 5 * 60 * 1000;
+
   return OTP;
 };
 
