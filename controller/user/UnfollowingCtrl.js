@@ -4,7 +4,7 @@ const validId = require("../../utils/isValid");
 
 // Unfollowing
 
-const UnfollowingCtrl = expressAsyncHandler(async (req, res) => {
+exports.UnfollowingCtrl = expressAsyncHandler(async (req, res) => {
   const { Id } = req.body;
 
   validId(Id);
@@ -42,5 +42,3 @@ const UnfollowingCtrl = expressAsyncHandler(async (req, res) => {
     Followind_Id: Id,
   });
 });
-
-module.exports = UnfollowingCtrl

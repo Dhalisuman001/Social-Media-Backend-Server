@@ -3,7 +3,7 @@ const User = require("../../model/user/UserModel");
 const crypto = require("crypto");
 
 // change password otp
-const ChangePassOTP = expressAsyncHandler(async (req, res) => {
+exports.ChangePassOTP = expressAsyncHandler(async (req, res) => {
   const { email, otp, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -25,5 +25,3 @@ const ChangePassOTP = expressAsyncHandler(async (req, res) => {
 
   res.json(user);
 });
-
-module.exports = ChangePassOTP;

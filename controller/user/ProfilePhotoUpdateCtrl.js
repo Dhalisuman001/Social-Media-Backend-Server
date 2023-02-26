@@ -3,7 +3,7 @@ const User = require("../../model/user/UserModel");
 const fs = require("fs");
 const cloudinaryUploadImg = require("../../utils/Cloudinary");
 
-const ProfilePhotoUpdateCtrl = expressAsyncHandler(async (req, res) => {
+exports.ProfilePhotoUpdateCtrl = expressAsyncHandler(async (req, res) => {
   //get the user
   const id = req.params.id;
   console.log(id);
@@ -30,4 +30,3 @@ const ProfilePhotoUpdateCtrl = expressAsyncHandler(async (req, res) => {
   });
 });
 
-module.exports = ProfilePhotoUpdateCtrl;

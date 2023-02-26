@@ -2,7 +2,7 @@ const expressAsyncHandler = require("express-async-handler");
 const getToken = require("../../config/token/getToken");
 const User = require("../../model/user/UserModel");
 
-const LoginCtrl = expressAsyncHandler(async (req, res) => {
+exports.LoginCtrl = expressAsyncHandler(async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
@@ -23,4 +23,3 @@ const LoginCtrl = expressAsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = LoginCtrl;

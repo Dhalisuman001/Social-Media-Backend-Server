@@ -2,7 +2,7 @@ const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
-const UpdateUser = expressAsyncHandler(async (req, res) => {
+exports.UpdateUserCtrl = expressAsyncHandler(async (req, res) => {
   const id = req.user;
   validId(id);
 
@@ -24,5 +24,3 @@ const UpdateUser = expressAsyncHandler(async (req, res) => {
     throw new Error(`Invalid user`);
   }
 });
-
-module.exports = UpdateUser;
