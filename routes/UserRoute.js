@@ -16,6 +16,7 @@ const EmailVerificationCtrl = require("../controller/user/EmailVerification");
 const { VerifyEmailOTPCtrl } = require("../controller/user/VerifyEmailOTP");
 const AuthHandel = require("../middleware/auth/AuthHandler");
 const FollowingCtrl = require("../controller/user/FollowingCtrl");
+const UnfollowingCtrl = require("../controller/user/UnfollowingCtrl");
 const UserRoute = require("express").Router();
 
 //
@@ -28,6 +29,7 @@ UserRoute.route("/register").post(RegisterCtrl);
 
 UserRoute.route("/verify-email").get(EmailVerificationCtrl);
 UserRoute.route("/following").post(AuthHandel, FollowingCtrl);
+UserRoute.route("/unfollowing").post(AuthHandel, UnfollowingCtrl)
 UserRoute.route("/verified").get(VerifyEmailOTPCtrl);
 
 // will be change

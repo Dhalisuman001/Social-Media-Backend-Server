@@ -4,6 +4,7 @@ const { FetchProfileCtrl } = require("./FetchProfile")
 const { FetchUserCtrl } = require("./FetchUser")
 const { FetchUsersCtrl } = require("./FetchUsers")
 const { FollowingCtrl } = require("./FollowingCtrl")
+const { UnfollowingCtrl } = require("./UnfollowingCtrl")
 const { LoginCtrl } = require("./LoginCtrl")
 const { ProfilePhotoUpdateCtrl } = require("./ProfilePhotoUpdateCtrl")
 const { RegisterCtrl } = require("./RegisterCtrl")
@@ -18,6 +19,7 @@ module.exports = { ChangePassOTP,
     FetchUserCtrl,
     FetchUsersCtrl,
     FollowingCtrl,
+    UnfollowingCtrl,
     LoginCtrl,
     ProfilePhotoUpdateCtrl,
     RegisterCtrl,
