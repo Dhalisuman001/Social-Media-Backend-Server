@@ -2,8 +2,9 @@ const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
-// Following
-const FollowingCtrl = expressAsyncHandler(async (req, res) => {
+// Unfollowing
+
+const UnfollowingCtrl = expressAsyncHandler(async (req, res) => {
   const { Id } = req.body;
 
   validId(Id);
@@ -17,28 +18,29 @@ const FollowingCtrl = expressAsyncHandler(async (req, res) => {
     (u) => u.toString() === myId.toString()
   );
 
-  if (isFollowing) throw new Error("You already following this user!");
+  if (!isFollowing) throw new Error("You do not follow this user");
 
   await User.findByIdAndUpdate(
     Id,
     {
-      $push: { followers: myId },
+      $pull: { followers: myId },
     },
     { new: true }
   );
+
   await User.findByIdAndUpdate(
     myId,
     {
-      $push: { following: Id },
+      $pull: { following: Id },
     },
     { new: true }
   );
 
   res.json({
-    message: "Successfully Followed",
+    message: "Unfollowed Successfully",
     My_Id: myId,
-    Following_Id: Id,
+    Followind_Id: Id,
   });
 });
 
-module.exports = FollowingCtrl;
+module.exports = UnfollowingCtrl
