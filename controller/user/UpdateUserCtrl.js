@@ -3,7 +3,7 @@ const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
 const UpdateUser = expressAsyncHandler(async (req, res) => {
-  const id = req.params.id;
+  const id = req.user;
   validId(id);
 
   try {

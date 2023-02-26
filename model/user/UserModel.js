@@ -90,7 +90,7 @@ const UserSchema = mongoose.Schema(
     forgotPasswordTokenExpire: Date,
     active: {
       type: Boolean,
-      default: false,
+      default: true,
     },
   },
   {
