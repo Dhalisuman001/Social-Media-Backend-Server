@@ -1,33 +1,33 @@
-const { ChangePassOTP } = require("./ChangePassOTP")
-const { EmailVerificationCtrl } = require("./EmailVerification")
-const { FetchProfileCtrl } = require("./FetchProfile")
-const { FetchUserCtrl } = require("./FetchUser")
-const { FetchUsersCtrl } = require("./FetchUsers")
-const { FollowingCtrl } = require("./FollowingCtrl")
-const { UnfollowingCtrl } = require("./UnfollowingCtrl")
-const { LoginCtrl } = require("./LoginCtrl")
-const { ProfilePhotoUpdateCtrl } = require("./ProfilePhotoUpdateCtrl")
-const { RegisterCtrl } = require("./RegisterCtrl")
-const { UpdateUserCtrl } = require("./UpdateUserCtrl")
-const { BlockUser, UnblockUser } = require("./UserBlockCtrl")
-const { VerifyEmailOTPCtrl } = require("./VerifyEmailOTP")
-const { ForgetPasswordCtrl } = require("./ForgetPasswordCtrl")
-
+const ChangePassOTP = require("./ChangePassOTPCtrl");
+const EmailVerificationCtrl = require("./EmailVerificationCtrl");
+const FetchProfileCtrl = require("./FetchProfileCtrl");
+const FetchUserCtrl = require("./FetchUserCtrl");
+const FetchUsersCtrl = require("./FetchUsersCtrl");
+const FollowingCtrl = require("./FollowingCtrl");
+const UnfollowingCtrl = require("./UnfollowingCtrl");
+const LoginCtrl = require("./LoginCtrl");
+const ProfilePhotoUpdateCtrl = require("./ProfilePhotoUpdateCtrl");
+const RegisterCtrl = require("./RegisterCtrl");
+const UpdateUserCtrl = require("./UpdateUserCtrl");
+const VerifyEmailOTPCtrl = require("./VerifyEmailOTPCtrl");
+const ForgetPasswordCtrl = require("./ForgetPasswordCtrl");
+const BlockUserCtrl = require("./BlockCtrl");
+const UnblockUserCtrl = require("./UnblockCtrl");
 
 module.exports = {
-    ChangePassOTP,
-    EmailVerificationCtrl,
-    FetchProfileCtrl,
-    FetchUserCtrl,
-    FetchUsersCtrl,
-    FollowingCtrl,
-    UnfollowingCtrl,
-    LoginCtrl,
-    ProfilePhotoUpdateCtrl,
-    RegisterCtrl,
-    UpdateUserCtrl,
-    BlockUser,
-    UnblockUser,
-    VerifyEmailOTPCtrl,
-    ForgetPasswordCtrl
-}
+  ChangePassOTP,
+  EmailVerificationCtrl,
+  FetchProfileCtrl,
+  FetchUserCtrl,
+  FetchUsersCtrl,
+  FollowingCtrl,
+  UnfollowingCtrl,
+  LoginCtrl,
+  ProfilePhotoUpdateCtrl,
+  RegisterCtrl,
+  UpdateUserCtrl,
+  UnblockUserCtrl,
+  VerifyEmailOTPCtrl,
+  ForgetPasswordCtrl,
+  BlockUserCtrl,
+};

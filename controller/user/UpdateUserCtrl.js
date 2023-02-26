@@ -2,13 +2,13 @@ const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
-exports.UpdateUserCtrl = expressAsyncHandler(async (req, res) => {
-  const id = req.user;
-  validId(id);
+const UpdateUserCtrl = expressAsyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  validId(_id);
 
   try {
     const user = await User.findByIdAndUpdate(
-      id,
+      _id,
       {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -24,3 +24,5 @@ exports.UpdateUserCtrl = expressAsyncHandler(async (req, res) => {
     throw new Error(`Invalid user`);
   }
 });
+
+module.exports = UpdateUserCtrl;

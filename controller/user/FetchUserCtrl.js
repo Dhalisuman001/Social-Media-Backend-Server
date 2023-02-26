@@ -2,7 +2,7 @@ const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
-exports.FetchUserCtrl = expressAsyncHandler(async (req, res) => {
+const FetchUserCtrl = expressAsyncHandler(async (req, res) => {
   const id = req.params.id;
   validId(id);
 
@@ -14,3 +14,5 @@ exports.FetchUserCtrl = expressAsyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 });
+
+module.exports = FetchUserCtrl;

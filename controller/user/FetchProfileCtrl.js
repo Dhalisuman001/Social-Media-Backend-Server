@@ -2,7 +2,7 @@ const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
-exports.FetchProfileCtrl = expressAsyncHandler(async (req, res) => {
+const FetchProfileCtrl = expressAsyncHandler(async (req, res) => {
   const userId = req.params.id;
   validId(userId);
 
@@ -14,3 +14,5 @@ exports.FetchProfileCtrl = expressAsyncHandler(async (req, res) => {
     throw new Error("Profile does not exist");
   }
 });
+
+module.exports = FetchProfileCtrl;

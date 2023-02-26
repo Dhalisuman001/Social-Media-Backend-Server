@@ -3,7 +3,7 @@ const User = require("../../model/user/UserModel");
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-exports.ForgetPasswordCtrl = expressAsyncHandler(async (req, res) => {
+const ForgetPasswordCtrl = expressAsyncHandler(async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
@@ -29,3 +29,4 @@ exports.ForgetPasswordCtrl = expressAsyncHandler(async (req, res) => {
   }
 });
 
+module.exports = ForgetPasswordCtrl;

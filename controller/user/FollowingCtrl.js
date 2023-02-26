@@ -3,7 +3,7 @@ const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
 // Following
-exports.FollowingCtrl = expressAsyncHandler(async (req, res) => {
+const FollowingCtrl = expressAsyncHandler(async (req, res) => {
   const { Id } = req.body;
 
   validId(Id);
@@ -41,3 +41,4 @@ exports.FollowingCtrl = expressAsyncHandler(async (req, res) => {
   });
 });
 
+module.exports = FollowingCtrl;

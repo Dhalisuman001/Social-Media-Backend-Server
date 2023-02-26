@@ -2,7 +2,7 @@ const DbConnect = require("./config/db/DbConnect");
 const express = require("express");
 const cors = require("cors");
 const UserRoute = require("./routes/UserRoute");
-const { notFound, errorHandler } = require("./middleware/error/ErrorHandler");
+const { notFound, errorHandler } = require("./middleware");
 const app = express();
 
 // Db Connection

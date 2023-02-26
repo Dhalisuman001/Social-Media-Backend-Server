@@ -3,7 +3,7 @@ const User = require("../../model/user/UserModel");
 const crypto = require("crypto");
 
 // email verification
-exports.VerifyEmailOTPCtrl = expressAsyncHandler(async (req, res) => {
+const VerifyEmailOTPCtrl = expressAsyncHandler(async (req, res) => {
   const { email, otp } = req.body;
 
   const user = await User.findOne({ email });
@@ -15,15 +15,17 @@ exports.VerifyEmailOTPCtrl = expressAsyncHandler(async (req, res) => {
   if (
     user.emailVerificationOTP !== hashedToken ||
     user.emailVerificationOTPExpire < new Date()
-  ){
-      throw new Error("OTP has expiredddd!");
+  ) {
+    throw new Error("OTP has expiredddd!");
   }
 
   user.isVerified = true;
   user.emailVerificationOTP = undefined;
   user.emailVerificationOTPExpire = undefined;
-//   user.new = true;
+  //   user.new = true;
   await user.save();
 
   res.json(user);
 });
+
+module.exports = VerifyEmailOTPCtrl;

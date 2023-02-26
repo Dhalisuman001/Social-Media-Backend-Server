@@ -1,30 +1,28 @@
 const UserRoute = require("express").Router();
 
-const { 
-  RegisterCtrl, 
-  LoginCtrl, 
-  FetchUsersCtrl, 
-  FetchUserCtrl, 
-  EmailVerificationCtrl, 
-  FetchProfileCtrl, 
-  UpdateUserCtrl, 
-  BlockUser, 
-  UnblockUser, 
-  FollowingCtrl, 
-  UnfollowingCtrl, 
-  ForgetPasswordCtrl, 
-  ChangePassOTP, 
-  VerifyEmailOTPCtrl, 
-  ProfilePhotoUpdateCtrl 
+const {
+  RegisterCtrl,
+  LoginCtrl,
+  FetchUsersCtrl,
+  FetchUserCtrl,
+  EmailVerificationCtrl,
+  FetchProfileCtrl,
+  UpdateUserCtrl,
+  BlockUserCtrl,
+  UnblockUserCtrl,
+  FollowingCtrl,
+  UnfollowingCtrl,
+  ForgetPasswordCtrl,
+  ChangePassOTP,
+  VerifyEmailOTPCtrl,
+  ProfilePhotoUpdateCtrl,
 } = require("../controller/user");
 
-const AuthHandel = require("../middleware/auth/AuthHandler");
-
 const {
+  AuthHandel,
   PhotoUpload,
   profilePhotoResize,
-} = require("../middleware/upload/PhotoUpload");
-
+} = require("../middleware");
 
 // ! ROUTES START FROM HERE
 
@@ -37,32 +35,31 @@ UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
 //fetch single user route
 UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
 //fetch user profile route
-UserRoute.route("/profile/:id").get(FetchProfileCtrl);
+UserRoute.route("/profile/:id").get(AuthHandel, FetchProfileCtrl);
 //user update route
-UserRoute.route("/updateuser/:id").post(UpdateUserCtrl);
+UserRoute.route("/update").post(AuthHandel, UpdateUserCtrl);
 // will be change
-UserRoute.route("/photo-upload/:id").put(
+UserRoute.route("/avatar-update/:id").put(
+  AuthHandel,
   PhotoUpload.single("image"),
   profilePhotoResize,
   ProfilePhotoUpdateCtrl
 );
 //block user route
-UserRoute.route("/blockuser/:id").put(BlockUser);
+UserRoute.route("/block/:id").put(AuthHandel, BlockUserCtrl);
 //unblock user route
-UserRoute.route("/unblockuser/:id").put(UnblockUser);
+UserRoute.route("/unblock/:id").put(AuthHandel, UnblockUserCtrl);
 //following user route
-UserRoute.route("/following").post(AuthHandel, FollowingCtrl);
+UserRoute.route("/follow").post(AuthHandel, FollowingCtrl);
 //unfollowing user route
-UserRoute.route("/unfollowing").post(AuthHandel, UnfollowingCtrl);
+UserRoute.route("/unfollow").post(AuthHandel, UnfollowingCtrl);
 //forget password route
 UserRoute.route("/forget-password").get(ForgetPasswordCtrl);
 
-UserRoute.route("/change-pass").get(ChangePassOTP);
+UserRoute.route("/change-password").get(ChangePassOTP);
 //verify email route
-UserRoute.route("/verify-email").get(EmailVerificationCtrl);
+UserRoute.route("/verify-email").get(AuthHandel, EmailVerificationCtrl);
 
 UserRoute.route("/verified").get(VerifyEmailOTPCtrl);
-
-
 
 module.exports = UserRoute;

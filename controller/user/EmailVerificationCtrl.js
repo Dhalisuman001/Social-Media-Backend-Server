@@ -4,7 +4,7 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // send the otp to the user's mail
-exports.EmailVerificationCtrl = expressAsyncHandler(async (req, res) => {
+const EmailVerificationCtrl = expressAsyncHandler(async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
@@ -29,3 +29,5 @@ exports.EmailVerificationCtrl = expressAsyncHandler(async (req, res) => {
     res.json(error);
   }
 });
+
+module.exports = EmailVerificationCtrl;
