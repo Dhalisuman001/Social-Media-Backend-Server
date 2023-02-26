@@ -10,7 +10,7 @@ const AuthHandel = expressAsyncHandler(async (req, res, next) => {
     token = req.headers.authorization;
     if (token) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-      console.log(decoded);
+      // console.log(decoded);
 
       //find the user by _id
       const user = await User.findById(decoded?.id).select("-password");

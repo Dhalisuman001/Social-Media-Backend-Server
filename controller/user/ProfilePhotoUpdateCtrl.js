@@ -5,7 +5,7 @@ const cloudinaryUploadImg = require("../../utils/Cloudinary");
 
 const ProfilePhotoUpdateCtrl = expressAsyncHandler(async (req, res) => {
   //get the user
-  const id = req.params.id;
+  const id = req.user._id;
   console.log(id);
 
   ////get the path to img
