@@ -30,6 +30,8 @@ const {
 UserRoute.route("/register").post(RegisterCtrl);
 //user login route
 UserRoute.route("/login").get(LoginCtrl);
+//user email otp verify route
+UserRoute.route("/verified").get(AuthHandel,VerifyEmailOTPCtrl);
 //fetch all users route
 UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
 //fetch single user route
@@ -39,7 +41,7 @@ UserRoute.route("/profile/:id").get(AuthHandel, FetchProfileCtrl);
 //user update route
 UserRoute.route("/update").post(AuthHandel, UpdateUserCtrl);
 // will be change
-UserRoute.route("/avatar-update/:id").put(
+UserRoute.route("/avatar-update").put(
   AuthHandel,
   PhotoUpload.single("image"),
   profilePhotoResize,
@@ -54,12 +56,12 @@ UserRoute.route("/follow").post(AuthHandel, FollowingCtrl);
 //unfollowing user route
 UserRoute.route("/unfollow").post(AuthHandel, UnfollowingCtrl);
 //forget password route
-UserRoute.route("/forget-password").get(ForgetPasswordCtrl);
+UserRoute.route("/forget-password").post(ForgetPasswordCtrl);
 
-UserRoute.route("/change-password").get(ChangePassOTP);
+UserRoute.route("/change-password").post(ChangePassOTP);
 //verify email route
-UserRoute.route("/verify-email").get(AuthHandel, EmailVerificationCtrl);
+UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
 
-UserRoute.route("/verified").get(VerifyEmailOTPCtrl);
+
 
 module.exports = UserRoute;

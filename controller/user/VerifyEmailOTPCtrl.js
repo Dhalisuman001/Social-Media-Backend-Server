@@ -4,7 +4,8 @@ const crypto = require("crypto");
 
 // email verification
 const VerifyEmailOTPCtrl = expressAsyncHandler(async (req, res) => {
-  const { email, otp } = req.body;
+  const { email } = req.user;
+  const { otp } = req.body;
 
   const user = await User.findOne({ email });
 
