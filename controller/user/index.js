@@ -8,12 +8,14 @@ const { UnfollowingCtrl } = require("./UnfollowingCtrl")
 const { LoginCtrl } = require("./LoginCtrl")
 const { ProfilePhotoUpdateCtrl } = require("./ProfilePhotoUpdateCtrl")
 const { RegisterCtrl } = require("./RegisterCtrl")
-const { UpdateUser } = require("./UpdateUserCtrl")
+const { UpdateUserCtrl } = require("./UpdateUserCtrl")
 const { BlockUser, UnblockUser } = require("./UserBlockCtrl")
 const { VerifyEmailOTPCtrl } = require("./VerifyEmailOTP")
+const { ForgetPasswordCtrl } = require("./ForgetPasswordCtrl")
 
 
-module.exports = { ChangePassOTP,
+module.exports = {
+    ChangePassOTP,
     EmailVerificationCtrl,
     FetchProfileCtrl,
     FetchUserCtrl,
@@ -23,7 +25,9 @@ module.exports = { ChangePassOTP,
     LoginCtrl,
     ProfilePhotoUpdateCtrl,
     RegisterCtrl,
-    UpdateUser,
+    UpdateUserCtrl,
     BlockUser,
     UnblockUser,
-    VerifyEmailOTPCtrl, }
+    VerifyEmailOTPCtrl,
+    ForgetPasswordCtrl
+}

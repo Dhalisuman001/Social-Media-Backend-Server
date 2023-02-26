@@ -1,51 +1,68 @@
-const FetchUserCtrl = require("../controller/user/FetchUser");
-const FetchUsersCtrl = require("../controller/user/FetchUsers");
-const LoginCtrl = require("../controller/user/LoginCtrl");
-const RegisterCtrl = require("../controller/user/RegisterCtrl");
-const UpdateUserCtrl = require("../controller/user/UpdateUserCtrl");
-const FetchProfileCtrl = require("../controller/user/FetchProfile");
-const { BlockUser, UnblockUser } = require("../controller/user/UserBlockCtrl");
-const ForgetPasswordCtrl = require("../controller/user/ForgetPasswordCtrl");
-const ProfilePhotoUpdateCtrl = require("../controller/user/ProfilePhotoUpdateCtrl");
+const UserRoute = require("express").Router();
+
+const { 
+  RegisterCtrl, 
+  LoginCtrl, 
+  FetchUsersCtrl, 
+  FetchUserCtrl, 
+  EmailVerificationCtrl, 
+  FetchProfileCtrl, 
+  UpdateUserCtrl, 
+  BlockUser, 
+  UnblockUser, 
+  FollowingCtrl, 
+  UnfollowingCtrl, 
+  ForgetPasswordCtrl, 
+  ChangePassOTP, 
+  VerifyEmailOTPCtrl, 
+  ProfilePhotoUpdateCtrl 
+} = require("../controller/user");
+
+const AuthHandel = require("../middleware/auth/AuthHandler");
+
 const {
   PhotoUpload,
   profilePhotoResize,
 } = require("../middleware/upload/PhotoUpload");
-const ChangePassOTP = require("../controller/user/ChangePassOTP");
-const EmailVerificationCtrl = require("../controller/user/EmailVerification");
-const { VerifyEmailOTPCtrl } = require("../controller/user/VerifyEmailOTP");
-const AuthHandel = require("../middleware/auth/AuthHandler");
-const FollowingCtrl = require("../controller/user/FollowingCtrl");
-const UnfollowingCtrl = require("../controller/user/UnfollowingCtrl");
-const UserRoute = require("express").Router();
 
-//
-//
-//
-//
+
 // ! ROUTES START FROM HERE
 
+//user register route
 UserRoute.route("/register").post(RegisterCtrl);
-
-UserRoute.route("/verify-email").get(EmailVerificationCtrl);
-UserRoute.route("/following").post(AuthHandel, FollowingCtrl);
-UserRoute.route("/unfollowing").post(AuthHandel, UnfollowingCtrl)
-UserRoute.route("/verified").get(VerifyEmailOTPCtrl);
-
+//user login route
+UserRoute.route("/login").get(LoginCtrl);
+//fetch all users route
+UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
+//fetch single user route
+UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
+//fetch user profile route
+UserRoute.route("/profile/:id").get(FetchProfileCtrl);
+//user update route
+UserRoute.route("/updateuser/:id").post(UpdateUserCtrl);
 // will be change
 UserRoute.route("/photo-upload/:id").put(
   PhotoUpload.single("image"),
   profilePhotoResize,
   ProfilePhotoUpdateCtrl
 );
-UserRoute.route("/forget-password").get(ForgetPasswordCtrl);
-UserRoute.route("/change-pass").get(ChangePassOTP);
-UserRoute.route("/login").get(LoginCtrl);
-UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
-UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
-UserRoute.route("/updateuser/:id").post(UpdateUserCtrl);
-UserRoute.route("/profile/:id").get(FetchProfileCtrl);
+//block user route
 UserRoute.route("/blockuser/:id").put(BlockUser);
+//unblock user route
 UserRoute.route("/unblockuser/:id").put(UnblockUser);
+//following user route
+UserRoute.route("/following").post(AuthHandel, FollowingCtrl);
+//unfollowing user route
+UserRoute.route("/unfollowing").post(AuthHandel, UnfollowingCtrl);
+//forget password route
+UserRoute.route("/forget-password").get(ForgetPasswordCtrl);
+
+UserRoute.route("/change-pass").get(ChangePassOTP);
+//verify email route
+UserRoute.route("/verify-email").get(EmailVerificationCtrl);
+
+UserRoute.route("/verified").get(VerifyEmailOTPCtrl);
+
+
 
 module.exports = UserRoute;
