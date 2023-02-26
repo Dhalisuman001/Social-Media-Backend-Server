@@ -17,8 +17,8 @@ npm i nodemon --save-dev
 -> User Activate
 -> Update Password
 -> Hashtag model
--> User Following
 -> User Unfollowing
+-> Index File in User
 
 # Email
 

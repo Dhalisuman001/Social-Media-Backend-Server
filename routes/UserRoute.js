@@ -12,9 +12,10 @@ const {
   profilePhotoResize,
 } = require("../middleware/upload/PhotoUpload");
 const ChangePassOTP = require("../controller/user/ChangePassOTP");
-const EmailVerificationCtrl = require("../controller/user/EmailVerififcation");
+const EmailVerificationCtrl = require("../controller/user/EmailVerification");
 const { VerifyEmailOTPCtrl } = require("../controller/user/VerifyEmailOTP");
 const AuthHandel = require("../middleware/auth/AuthHandler");
+const FollowingCtrl = require("../controller/user/FollowingCtrl");
 const UserRoute = require("express").Router();
 
 //
@@ -26,6 +27,7 @@ const UserRoute = require("express").Router();
 UserRoute.route("/register").post(RegisterCtrl);
 
 UserRoute.route("/verify-email").get(EmailVerificationCtrl);
+UserRoute.route("/following").post(AuthHandel, FollowingCtrl);
 UserRoute.route("/verified").get(VerifyEmailOTPCtrl);
 
 // will be change
