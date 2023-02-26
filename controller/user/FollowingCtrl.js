@@ -2,7 +2,7 @@ const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
-// change password otp
+// Following
 const FollowingCtrl = expressAsyncHandler(async (req, res) => {
   const { Id } = req.body;
 
