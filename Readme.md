@@ -12,13 +12,10 @@ npm i nodemon --save-dev
 
 # Task
 
--> User Delete
 -> User Dectivate
 -> User Activate
 -> Update Password
 -> Hashtag model
--> User Unfollowing
--> Index File in User
 
 # Email
 

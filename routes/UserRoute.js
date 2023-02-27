@@ -16,6 +16,7 @@ const {
   ChangePassOTP,
   VerifyEmailOTPCtrl,
   ProfilePhotoUpdateCtrl,
+  DeleteUserCtrl,
 } = require("../controller/user");
 
 const {
@@ -61,6 +62,9 @@ UserRoute.route("/forget-password").post(ForgetPasswordCtrl);
 UserRoute.route("/change-password").post(ChangePassOTP);
 //verify email route
 UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
+//delete user route
+UserRoute.route("/delete").delete(AuthHandel, DeleteUserCtrl);
+
 
 
 
