@@ -104,6 +104,12 @@ const UserSchema = mongoose.Schema(
   }
 );
 
+UserSchema.virtual("Post", {
+  ref: "Post",
+  foreignField: "author",
+  localField: "_id",
+});
+
 // encrypt password before save --Hooks
 UserSchema.pre("save", async function (next) {
   // Only run this function if password was moddified (not on other update functions)

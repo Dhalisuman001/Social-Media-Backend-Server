@@ -3,11 +3,6 @@ const mongoose = require("mongoose");
 // post Schema
 const postSchema = mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: [true, "Please provide the title"],
-    },
-
     description: {
       type: String,
     },

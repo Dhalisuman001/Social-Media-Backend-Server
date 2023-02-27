@@ -7,7 +7,7 @@ const FetchUserCtrl = expressAsyncHandler(async (req, res) => {
   validId(id);
 
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).populate("Post");
     res.json(user);
   } catch (error) {
     res.status(404);
