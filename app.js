@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const UserRoute = require("./routes/UserRoute");
 const { notFound, errorHandler } = require("./middleware");
+const PostRoute = require("./routes/PostRoute");
 const app = express();
 
 // Db Connection
@@ -15,6 +16,7 @@ app.use(cors());
 
 // User routes
 app.use("/api/user/", UserRoute);
+app.use("/api/post/", PostRoute);
 
 // Handeling Error
 app.use(notFound);
