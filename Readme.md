@@ -14,8 +14,12 @@ npm i nodemon --save-dev
 
 -> User Dectivate
 -> User Activate
--> Update Password
+-> Update Post
+-> Delete Post
+-> Fetch Single Post
+-> Fetch Post
 -> Hashtag model
+-> Story / Status model
 
 # Email
 

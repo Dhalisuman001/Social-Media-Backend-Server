@@ -1,4 +1,5 @@
 const PostCreateCtrl = require("../controller/post/PostCreate");
+const PostLikeCtrl = require("../controller/post/PostLikeCtrl");
 const { AuthHandel, PhotoUpload } = require("../middleware");
 const { PostPhotoResize } = require("../middleware/upload/PhotoUpload");
 
@@ -10,5 +11,6 @@ PostRoute.route("/create").post(
   PostPhotoResize,
   PostCreateCtrl
 );
+PostRoute.route("/like").put(AuthHandel, PostLikeCtrl);
 
 module.exports = PostRoute;
