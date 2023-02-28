@@ -17,6 +17,7 @@ const {
   VerifyEmailOTPCtrl,
   ProfilePhotoUpdateCtrl,
   DeleteUserCtrl,
+  updatePassword,
 } = require("../controller/user");
 
 const {
@@ -65,6 +66,7 @@ UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
 //delete user route
 UserRoute.route("/delete").delete(AuthHandel, DeleteUserCtrl);
 
+UserRoute.route("/update-password").put(AuthHandel, updatePassword);
 
 
 
