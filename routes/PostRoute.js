@@ -1,3 +1,5 @@
+const { FetchPostsCtrl } = require("../controller/post/FetchPosts");
+const { FetchPostCtrl } = require("../controller/post/FetchSinglePost");
 const PostCreateCtrl = require("../controller/post/PostCreate");
 const PostLikeCtrl = require("../controller/post/PostLikeCtrl");
 const { AuthHandel, PhotoUpload } = require("../middleware");
@@ -12,5 +14,7 @@ PostRoute.route("/create").post(
   PostCreateCtrl
 );
 PostRoute.route("/like").put(AuthHandel, PostLikeCtrl);
+PostRoute.route("/").get(AuthHandel, FetchPostsCtrl)
+PostRoute.route("/:id").get(AuthHandel, FetchPostCtrl)
 
 module.exports = PostRoute;

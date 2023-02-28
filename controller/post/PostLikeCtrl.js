@@ -1,5 +1,5 @@
 const expressAsyncHandler = require("express-async-handler");
-const Post = require("../../model/post/postModel");
+const Post = require("../../model/post/PostModel");
 const validId = require("../../utils/isValid");
 
 const PostLikeCtrl = expressAsyncHandler(async (req, res) => {

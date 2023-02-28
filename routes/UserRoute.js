@@ -18,6 +18,7 @@ const {
   ProfilePhotoUpdateCtrl,
   DeleteUserCtrl,
   updatePassword,
+  DeactivationCtrl
 } = require("../controller/user");
 
 const {
@@ -68,6 +69,6 @@ UserRoute.route("/delete").delete(AuthHandel, DeleteUserCtrl);
 
 UserRoute.route("/update-password").put(AuthHandel, updatePassword);
 
-
+UserRoute.route('/inactive').put(AuthHandel, DeactivationCtrl)
 
 module.exports = UserRoute;
