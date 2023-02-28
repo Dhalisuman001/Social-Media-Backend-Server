@@ -92,6 +92,7 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    deactivationTimeExpire: Date,
   },
   {
     toJSON: {

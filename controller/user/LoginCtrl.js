@@ -9,7 +9,12 @@ const LoginCtrl = expressAsyncHandler(async (req, res) => {
     throw new Error("Email does not exist!");
   }
 
+  if (!user.active && user.deactivationTimeExpire < new Date())
+    throw new Error("User account deleted");
+
   if (await user.CheckPassword(req.body.password)) {
+    user.active = true;
+    await user.save();
     res.json({
       firstName: user.firstName,
       lastName: user.lastName,

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // post Schema
-const postSchema = mongoose.Schema(
+const PostSchema = mongoose.Schema(
   {
     description: {
       type: String,
@@ -94,6 +94,15 @@ const postSchema = mongoose.Schema(
   }
 );
 
+
+
+PostSchema.virtual("Comments", {
+  ref: "Comment",
+  foreignField: "post",
+  localField: "_id",
+});
+
+
 // compile
-const Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Post", PostSchema);
 module.exports = Post;
