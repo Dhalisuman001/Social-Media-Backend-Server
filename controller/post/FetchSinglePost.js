@@ -2,7 +2,7 @@ const expressAsyncHandler = require("express-async-handler")
 const Post = require("../../model/post/PostModel")
 const validId = require("../../utils/isValid")
 
-exports.FetchPostCtrl = expressAsyncHandler(async(req, res) => {
+const FetchPostCtrl = expressAsyncHandler(async(req, res) => {
     const id = req.params.id;
 
     validId(id)
@@ -15,3 +15,5 @@ exports.FetchPostCtrl = expressAsyncHandler(async(req, res) => {
         res.json(error)
     }
 })
+
+module.exports = FetchPostCtrl;

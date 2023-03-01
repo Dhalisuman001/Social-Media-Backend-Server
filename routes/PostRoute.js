@@ -1,11 +1,19 @@
-const { FetchPostsCtrl } = require("../controller/post/FetchPosts");
-const { FetchPostCtrl } = require("../controller/post/FetchSinglePost");
-const PostCreateCtrl = require("../controller/post/PostCreate");
-const PostLikeCtrl = require("../controller/post/PostLikeCtrl");
+
+const PostRoute = require("express").Router();
+
+const {
+  FetchPostsCtrl,
+  FetchPostCtrl,
+  PostCreateCtrl,
+  PostLikeCtrl,
+  updatePostCtrl,
+  DeletePostCtrl
+} = require("../controller/post");
+
 const { AuthHandel, PhotoUpload } = require("../middleware");
 const { PostPhotoResize } = require("../middleware/upload/PhotoUpload");
 
-const PostRoute = require("express").Router();
+
 
 PostRoute.route("/create").post(
   AuthHandel,
@@ -14,7 +22,11 @@ PostRoute.route("/create").post(
   PostCreateCtrl
 );
 PostRoute.route("/like").put(AuthHandel, PostLikeCtrl);
-PostRoute.route("/").get(AuthHandel, FetchPostsCtrl)
-PostRoute.route("/:id").get(AuthHandel, FetchPostCtrl)
+PostRoute.route("/").get(AuthHandel, FetchPostsCtrl);
+PostRoute.route("/:id").get(AuthHandel, FetchPostCtrl);
+PostRoute.route("/update").put(AuthHandel, updatePostCtrl);
+PostRoute.route("/delete").delete(AuthHandel, DeletePostCtrl);
+
+
 
 module.exports = PostRoute;
