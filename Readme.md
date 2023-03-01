@@ -12,15 +12,9 @@ npm i nodemon --save-dev
 
 # Task
 
-<!-- -> User Dectivate
--> User Activate -->
--> Update Post
--> Delete Post
-<!-- -> Fetch Single Post
--> Fetch Post -->
+
 -> Hashtag model
--> Story / Status model
-<!-- -> Create Comment Ctrl -->
+
 
 # Email
 
