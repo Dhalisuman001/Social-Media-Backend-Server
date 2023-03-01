@@ -14,7 +14,6 @@ npm i nodemon --save-dev
 
 
 -> Hashtag model
--> Story / Status model
 
 
 # Email
