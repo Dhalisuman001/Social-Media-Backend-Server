@@ -14,6 +14,7 @@ const LoginCtrl = expressAsyncHandler(async (req, res) => {
 
   if (await user.CheckPassword(req.body.password)) {
     user.active = true;
+    user.deactivationTimeExpire = undefined;
     await user.save();
     res.json({
       firstName: user.firstName,
