@@ -21,6 +21,7 @@ npm i nodemon --save-dev
 -> User block
 -> Location
 -> Comment like
+-> Notifications
 
 # Email
 
