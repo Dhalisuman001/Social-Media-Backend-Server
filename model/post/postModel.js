@@ -8,7 +8,7 @@ const PostSchema = mongoose.Schema(
     },
 
     image: {
-      type: String,
+      type: [],
     },
 
     postDate: {
@@ -94,14 +94,11 @@ const PostSchema = mongoose.Schema(
   }
 );
 
-
-
 PostSchema.virtual("Comments", {
   ref: "Comment",
   foreignField: "post",
   localField: "_id",
 });
-
 
 // compile
 const Post = mongoose.model("Post", PostSchema);

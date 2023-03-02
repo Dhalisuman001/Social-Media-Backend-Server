@@ -12,9 +12,15 @@ npm i nodemon --save-dev
 
 # Task
 
-
 -> Hashtag model
-
+-> Reply comment
+-> Story Stuff
+-> Tagging
+-> Sharing
+-> Video
+-> User block
+-> Location
+-> Comment like
 
 # Email
 

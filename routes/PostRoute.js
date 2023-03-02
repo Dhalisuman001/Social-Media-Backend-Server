@@ -1,4 +1,3 @@
-
 const PostRoute = require("express").Router();
 
 const {
@@ -7,26 +6,18 @@ const {
   PostCreateCtrl,
   PostLikeCtrl,
   updatePostCtrl,
-  DeletePostCtrl
+  DeletePostCtrl,
 } = require("../controller/post");
 
 const { AuthHandel, PhotoUpload } = require("../middleware");
 const { PostPhotoResize } = require("../middleware/upload/PhotoUpload");
+const uploadPostPhoto = require("../middleware/upload/PostPhoto");
 
-
-
-PostRoute.route("/create").post(
-  AuthHandel,
-  PhotoUpload.single("image"),
-  PostPhotoResize,
-  PostCreateCtrl
-);
+PostRoute.route("/create").post(AuthHandel, uploadPostPhoto, PostCreateCtrl);
 PostRoute.route("/like").put(AuthHandel, PostLikeCtrl);
 PostRoute.route("/").get(AuthHandel, FetchPostsCtrl);
 PostRoute.route("/:id").get(AuthHandel, FetchPostCtrl);
 PostRoute.route("/update").put(AuthHandel, updatePostCtrl);
 PostRoute.route("/delete").delete(AuthHandel, DeletePostCtrl);
-
-
 
 module.exports = PostRoute;
