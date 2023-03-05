@@ -13,6 +13,7 @@ const StorySchema = mongoose.Schema(
 
         storyTime: {
             type: Date,
+            default: Date.now
         },
 
         category: {
