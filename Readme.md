@@ -14,7 +14,7 @@ npm i nodemon --save-dev
 
 -> Hashtag model
 -> Reply comment
--> Story Stuff
+-> Story Stuff --> Story delition after 24 hrs
 -> Tagging
 -> Sharing
 -> Video
