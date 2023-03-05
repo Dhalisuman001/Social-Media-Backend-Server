@@ -9,8 +9,7 @@ const {
   DeletePostCtrl,
 } = require("../controller/post");
 
-const { AuthHandel, PhotoUpload } = require("../middleware");
-const { PostPhotoResize } = require("../middleware/upload/PhotoUpload");
+const { AuthHandel } = require("../middleware");
 const uploadPostPhoto = require("../middleware/upload/PostPhoto");
 
 PostRoute.route("/create").post(AuthHandel, uploadPostPhoto, PostCreateCtrl);
