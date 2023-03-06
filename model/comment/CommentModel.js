@@ -15,6 +15,18 @@ const CommentSchema = mongoose.Schema(
         description: {
             type: String,
             required: [true, "Description is required"],
+        },
+        likedBy: {
+            type: [
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "User",
+                },
+            ],
+        },
+        likes: {
+            type: Number,
+            default: 0,
         }
     },
     {
