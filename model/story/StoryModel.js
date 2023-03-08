@@ -11,9 +11,10 @@ const StorySchema = mongoose.Schema(
             required: [true, "Please provide the image"],
         },
 
-        storyTime: {
+        createdAt: {
             type: Date,
-            default: Date.now
+            default: Date.now,
+            expires: 24*60*60 // 24 hours
         },
 
         category: {
