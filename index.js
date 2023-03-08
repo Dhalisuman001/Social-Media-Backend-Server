@@ -4,5 +4,5 @@ require("dotenv").config();
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
-  console.log(`https://localhost:${port}`);
+  console.log(`http://127.0.0.1:${port}`);
 });
