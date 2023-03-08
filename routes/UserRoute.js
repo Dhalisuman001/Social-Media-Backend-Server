@@ -18,7 +18,7 @@ const {
   ProfilePhotoUpdateCtrl,
   DeleteUserCtrl,
   updatePassword,
-  DeactivationCtrl
+  DeactivationCtrl,
 } = require("../controller/user");
 
 const {
@@ -32,9 +32,9 @@ const {
 //user register route
 UserRoute.route("/register").post(RegisterCtrl);
 //user login route
-UserRoute.route("/login").get(LoginCtrl);
+UserRoute.route("/login").post(LoginCtrl);
 //user email otp verify route
-UserRoute.route("/verified").get(AuthHandel,VerifyEmailOTPCtrl);
+UserRoute.route("/verified").get(AuthHandel, VerifyEmailOTPCtrl);
 //fetch all users route
 UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
 //fetch single user route
@@ -69,6 +69,6 @@ UserRoute.route("/delete").delete(AuthHandel, DeleteUserCtrl);
 
 UserRoute.route("/update-password").put(AuthHandel, updatePassword);
 
-UserRoute.route('/inactive').put(AuthHandel, DeactivationCtrl)
+UserRoute.route("/inactive").put(AuthHandel, DeactivationCtrl);
 
 module.exports = UserRoute;
