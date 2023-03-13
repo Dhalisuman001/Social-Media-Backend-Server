@@ -17,11 +17,7 @@ const LoginCtrl = expressAsyncHandler(async (req, res) => {
     user.deactivationTimeExpire = undefined;
     await user.save();
     res.json({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      bio: user.bio,
-      isVerified: user.isVerified,
-      token: getToken(user.id),
+      token: getToken(user.id)
     });
   } else {
     res.status(404);
