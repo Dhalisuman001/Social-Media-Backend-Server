@@ -1,5 +1,6 @@
 const expressAsyncHandler = require("express-async-handler");
 const User = require("../../model/user/UserModel");
+const getToken = require("../../config/token/getToken");
 
 const RegisterCtrl = expressAsyncHandler(async (req, res) => {
   const CheckEmail = await User.findOne({ email: req.body.email });
@@ -15,7 +16,9 @@ const RegisterCtrl = expressAsyncHandler(async (req, res) => {
       password: req.body.password,
       email: req.body.email,
     });
-    res.json(user);
+    res.json({
+      token: getToken(user.id)
+    });
   } catch (error) {
     console.log(error);
   }
