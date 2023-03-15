@@ -3,7 +3,7 @@ const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
 const FetchProfileCtrl = expressAsyncHandler(async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.user._id;
   validId(userId);
 
   try {
