@@ -40,7 +40,7 @@ UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
 //fetch single user route
 UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
 //fetch user profile route
-UserRoute.route("/profile/:id").get(AuthHandel, FetchProfileCtrl);
+UserRoute.route("/profile").get(AuthHandel, FetchProfileCtrl);
 //user update route
 UserRoute.route("/update").post(AuthHandel, UpdateUserCtrl);
 // will be change
