@@ -37,10 +37,10 @@ UserRoute.route("/login").post(LoginCtrl);
 UserRoute.route("/verified").get(AuthHandel, VerifyEmailOTPCtrl);
 //fetch all users route
 UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
-//fetch single user route
-UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
 //fetch user profile route
 UserRoute.route("/profile").get(AuthHandel, FetchProfileCtrl);
+//fetch single user route
+UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
 //user update route
 UserRoute.route("/update").post(AuthHandel, UpdateUserCtrl);
 // will be change
