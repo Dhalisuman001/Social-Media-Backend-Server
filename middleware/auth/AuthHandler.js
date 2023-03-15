@@ -4,10 +4,10 @@ const User = require("../../model/user/UserModel");
 
 const AuthHandel = expressAsyncHandler(async (req, res, next) => {
   let token;
-  if (!req.headers.authorization) throw new Error("Please provide the  token");
+  if (!req.headers.authorization?.startsWith("Bearer"))
+    throw new Error("Please provide the bearer token");
   try {
-    // token = req.headers.authorization.replace("Bearer ", "");
-    token = req.headers.authorization;
+    token = req.headers.authorization.replace("Bearer ", "");
     if (token) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
       // console.log(decoded);
