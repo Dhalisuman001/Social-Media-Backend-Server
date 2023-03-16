@@ -3,7 +3,7 @@ const Post = require("../../model/post/PostModel");
 
 const FetchPostsCtrl = expressAsyncHandler(async (req, res) => {
   try {
-    const posts = await Post.find().populate("author").populate("Comment");
+    const posts = await Post.find().populate("author");
     res.json(posts);
   } catch (error) {
     res.json(error);
