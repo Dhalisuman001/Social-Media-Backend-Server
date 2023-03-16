@@ -65,6 +65,14 @@ const PostSchema = mongoose.Schema(
         },
       ],
     },
+    Comment: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Comment",
+        },
+      ],
+    },
 
     category: {
       type: String,
@@ -94,7 +102,7 @@ const PostSchema = mongoose.Schema(
   }
 );
 
-PostSchema.virtual("Comments", {
+PostSchema.virtual("Comment", {
   ref: "Comment",
   foreignField: "post",
   localField: "_id",
