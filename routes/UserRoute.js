@@ -1,5 +1,4 @@
 const UserRoute = require("express").Router();
-
 const {
   RegisterCtrl,
   LoginCtrl,
