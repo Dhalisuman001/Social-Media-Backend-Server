@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const getOTP = require("../../utils/OtpGenerator");
 const crypto = require("crypto");
+const validator = require("validator");
 
 const UserSchema = mongoose.Schema(
   {
     firstName: {
       type: String,
-      required: [true, "Please enter your first name"],
+      required: [true, "First name is required"],
     }, // String is shorthand for {type: String}
     lastName: {
       type: String,
@@ -44,12 +45,16 @@ const UserSchema = mongoose.Schema(
 
     email: {
       type: String,
-      required: [true, "Please enter email"],
-      unique: true,
+      trim: true,
+      validate: validator.isEmail,
+      required: [true, "Email is required"],
+      unique: [true, "Email already exists"],
     },
     password: {
       type: String,
-      required: [true, "Please enter email"],
+      required: [true, "Password is required"],
+      select: false,
+      minlength: 4,
     },
     postCount: {
       type: Number,
@@ -109,6 +114,7 @@ const UserSchema = mongoose.Schema(
   }
 );
 
+// to populate post from user model
 UserSchema.virtual("Post", {
   ref: "Post",
   foreignField: "author",
