@@ -12,7 +12,7 @@ const UserSchema = mongoose.Schema(
     }, // String is shorthand for {type: String}
     lastName: {
       type: String,
-      required: [true, "Please enter your last name"],
+      required: [true, "Last name required"],
     },
     profilePhoto: {
       type: String,
@@ -53,8 +53,6 @@ const UserSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      select: false,
-      minlength: 4,
     },
     postCount: {
       type: Number,
