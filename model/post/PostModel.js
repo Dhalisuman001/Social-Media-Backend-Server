@@ -10,6 +10,7 @@ const PostSchema = mongoose.Schema(
     image: {
       type: [],
     },
+    hashtag: Array,
 
     postDate: {
       type: Date,
@@ -58,37 +59,10 @@ const PostSchema = mongoose.Schema(
     },
 
     author: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-      ],
-    },
-    // Comment: {
-    //   type: [
-    //     {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Comment",
-    //     },
-    //   ],
-    // },
-
-    category: {
-      type: String,
-    },
-
-    isLiked: {
-      type: Boolean,
-      default: false,
-    },
-
-    isDisliked: {
-      type: Boolean,
-      default: false,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
   },
-
   {
     toJSON: {
       virtuals: true,
@@ -102,11 +76,27 @@ const PostSchema = mongoose.Schema(
   }
 );
 
-// PostSchema.virtual("Comment", {
-//   ref: "Comment",
-//   foreignField: "post",
-//   localField: "_id",
-// });
+//Populate Comment
+PostSchema.virtual("Comment", {
+  ref: "Comment",
+  foreignField: "post",
+  localField: "_id",
+});
+
+PostSchema.pre("save", function (next) {
+  let caption = this.caption.replace(/\s/g, "");
+  console.log(caption);
+  let hashTagIndex = caption.indexOf("#");
+  if (hashTagIndex === -1) {
+    this.hashtag = undefined;
+    return next();
+  }
+  let hashTagSplice = caption.slice(hashTagIndex);
+  //let res= hashTagSplice.replace(/#/, '').split('#');
+
+  this.hashtag = hashTagSplice.replace(/#/, "").split("#");
+  next();
+});
 
 // compile
 const Post = mongoose.model("Post", PostSchema);
