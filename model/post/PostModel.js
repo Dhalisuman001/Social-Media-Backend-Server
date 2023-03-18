@@ -3,13 +3,14 @@ const mongoose = require("mongoose");
 // post Schema
 const PostSchema = mongoose.Schema(
   {
-    description: {
+    caption: {
       type: String,
     },
 
     image: {
-      type: [],
+      type: [{ type: String }],
     },
+
     hashtag: Array,
 
     postDate: {
@@ -44,23 +45,10 @@ const PostSchema = mongoose.Schema(
       default: 0,
     },
 
-    dislikedBy: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        },
-      ],
-    },
-
-    dislikes: {
-      type: Number,
-      default: 0,
-    },
-
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
   },
   {
