@@ -15,7 +15,8 @@ const BlockUserCtrl = require("./BlockCtrl");
 const UnblockUserCtrl = require("./UnblockCtrl");
 const DeleteUserCtrl = require("./DeleteUserCtrl");
 const updatePassword = require("./UpdatePassword");
-const DeactivationCtrl = require("./IsActiveCtrl")
+const DeactivationCtrl = require("./IsActiveCtrl");
+const NewPassCtrl = require("./NewPassCtrl");
 
 module.exports = {
   ChangePassOTP,
@@ -35,5 +36,6 @@ module.exports = {
   BlockUserCtrl,
   DeleteUserCtrl,
   updatePassword,
-  DeactivationCtrl
+  DeactivationCtrl,
+  NewPassCtrl,
 };

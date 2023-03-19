@@ -18,6 +18,7 @@ const {
   DeleteUserCtrl,
   updatePassword,
   DeactivationCtrl,
+  NewPassCtrl,
 } = require("../controller/user");
 
 const {
@@ -61,6 +62,8 @@ UserRoute.route("/unfollow").post(AuthHandel, UnfollowingCtrl);
 UserRoute.route("/forget-password").post(ForgetPasswordCtrl);
 
 UserRoute.route("/change-password").post(ChangePassOTP);
+
+UserRoute.route("/new-password").post(NewPassCtrl);
 //verify email route
 UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
 //delete user route
