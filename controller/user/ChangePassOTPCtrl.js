@@ -4,11 +4,8 @@ const crypto = require("crypto");
 
 // change password otp
 const ChangePassOTPCtrl = expressAsyncHandler(async (req, res) => {
-  const { email, otp, password } = req.body;
-
+  const { email, otp } = req.body;
   const user = await User.findOne({ email });
-
-  if (!user) throw new Error("Email is Invalid");
 
   const hashedToken = crypto.createHash("sha256").update(otp).digest("hex");
 
@@ -18,12 +15,12 @@ const ChangePassOTPCtrl = expressAsyncHandler(async (req, res) => {
   )
     throw new Error("OTP has expired!");
 
-  user.password = password;
-  user.changePasswordOTP = undefined;
-  user.forgotPasswordTokenExpire = undefined;
-  await user.save();
+  // user.password = password;
+  // user.changePasswordOTP = undefined;
+  // user.forgotPasswordTokenExpire = undefined;
+  // await user.save();
 
-  res.json(user);
+  res.send(hashedToken);
 });
 
 module.exports = ChangePassOTPCtrl;
