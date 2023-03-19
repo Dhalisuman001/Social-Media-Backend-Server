@@ -1,33 +1,43 @@
 const expressAsyncHandler = require("express-async-handler");
-const Post = require("../../model/post/PostModel");
 const User = require("../../model/user/UserModel");
 const fs = require("fs");
 const validId = require("../../utils/isValid");
 const cloudinaryUploadImg = require("../../utils/Cloudinary");
+const Post = require("../../model/post/PostModel");
+
 const PostCreateCtrl = expressAsyncHandler(async (req, res) => {
   const id = req.user._id;
-  validId(id);
 
   const localpath = req.files?.map(({ filename }) => {
     return `public/images/post/${filename}`;
   });
 
   const uploadImg = [];
-  for (let i = 0; i < localpath.length; i++) {
-    console.log(localpath[i]);
+  for (let i = 0; i < localpath?.length; i++) {
     const { url } = await cloudinaryUploadImg(localpath[i]);
     uploadImg.push(url);
   }
 
-  const condition = req.body?.description || uploadImg;
+  const condition = req.body?.caption || uploadImg.length;
 
   if (!condition) throw new Error("No content found");
+
+  // remove uploaded images
+  if (uploadImg.length) {
+    localpath?.forEach((element) => {
+      fs.unlinkSync(element);
+    });
+  }
+
   try {
+    // console.log(uploadImg);
     const post = await Post.create({
       ...req.body,
       image: uploadImg,
       author: id,
     });
+
+    console.log(post);
 
     //update post count
     await User.findByIdAndUpdate(
@@ -41,12 +51,7 @@ const PostCreateCtrl = expressAsyncHandler(async (req, res) => {
     );
 
     // console.log(req.user);
-    // remove uploaded images
-    if (uploadImg) {
-      localpath.forEach((element) => {
-        fs.unlinkSync(element);
-      });
-    }
+
     res.json(post);
   } catch (error) {
     res.json(error);

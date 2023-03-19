@@ -9,11 +9,11 @@ cloudinary.config({
 
 const cloudinaryUploadImg = async (imgToUpload) => {
   try {
-    console.log(imgToUpload);
+    // console.log(imgToUpload);
     const data = await cloudinary.uploader.upload(imgToUpload, {
       resource_type: "auto",
     });
-
+    // console.log(data);
     return {
       url: data?.secure_url,
     };
