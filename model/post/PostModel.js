@@ -71,20 +71,20 @@ PostSchema.virtual("Comment", {
   localField: "_id",
 });
 
-PostSchema.pre("save", function (next) {
-  let caption = this.caption.replace(/\s/g, "");
-  console.log(caption);
-  let hashTagIndex = caption.indexOf("#");
-  if (hashTagIndex === -1) {
-    this.hashtag = undefined;
-    return next();
-  }
-  let hashTagSplice = caption.slice(hashTagIndex);
-  //let res= hashTagSplice.replace(/#/, '').split('#');
+// PostSchema.pre("save", function (next) {
+//   let caption = this.caption.replace(/\s/g, "");
+//   console.log(caption);
+//   let hashTagIndex = caption.indexOf("#");
+//   if (hashTagIndex === -1) {
+//     this.hashtag = undefined;
+//     return next();
+//   }
+//   let hashTagSplice = caption.slice(hashTagIndex);
+//   //let res= hashTagSplice.replace(/#/, '').split('#');
 
-  this.hashtag = hashTagSplice.replace(/#/, "").split("#");
-  next();
-});
+//   this.hashtag = hashTagSplice.replace(/#/, "").split("#");
+//   next();
+// });
 
 // compile
 const Post = mongoose.model("Post", PostSchema);
