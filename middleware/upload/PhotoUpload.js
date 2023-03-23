@@ -3,7 +3,19 @@ const sharp = require("sharp");
 const path = require("path");
 
 //storage
-const multerStorage = multer.memoryStorage();
+const multerStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../../public/images/profile"));
+  },
+  filename: function (req, file, cb) {
+    cb(
+      null,
+
+      (file.filename =
+        file.fieldname + "-" + Date.now() + file.originalname.match(/\..*$/)[0])
+    );
+  },
+});
 
 //file type checking
 const multerFilter = (req, file, cb) => {
@@ -22,21 +34,21 @@ const PhotoUpload = multer({
   limits: { fileSize: 1000000 },
 });
 
-//images resizing for profile photo
-const profilePhotoResize = async (req, res, next) => {
-  ///if there is no file
-  if (!req.file) return next();
-  req.file.filename = `user-${Date.now()}-${req.file.originalname}`;
-  // console.log("resizing", req.file);
-  await sharp(req.file.buffer)
-    .resize(250, 250)
-    .toFormat("jpeg")
-    .jpeg({ quality: 90 })
-    .toFile(path.join(`public/images/profile/${req.file.filename}`));
-  next();
-};
+// //images resizing for profile photo
+// const profilePhotoResize = async (req, res, next) => {
+//   ///if there is no file
+//   if (!req.file) return next();
+//   req.file.filename = `user-${Date.now()}-${req.file.originalname}`;
+//   // console.log("resizing", req.file);
+//   await sharp(req.file.buffer)
+//     .resize(250, 250)
+//     .toFormat("jpeg")
+//     .jpeg({ quality: 90 })
+//     .toFile(path.join(`public/images/profile/${req.file.filename}`));
+//   next();
+// };
 
 module.exports = {
-  profilePhotoResize,
+  // profilePhotoResize,
   PhotoUpload,
 };

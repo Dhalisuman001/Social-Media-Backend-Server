@@ -47,7 +47,6 @@ UserRoute.route("/update").post(AuthHandel, UpdateUserCtrl);
 UserRoute.route("/avatar-update").put(
   AuthHandel,
   PhotoUpload.single("image"),
-  profilePhotoResize,
   ProfilePhotoUpdateCtrl
 );
 //block user route
