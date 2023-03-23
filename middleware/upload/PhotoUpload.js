@@ -11,8 +11,7 @@ const multerStorage = multer.diskStorage({
     cb(
       null,
 
-      (file.filename =
-        file.fieldname + "-" + Date.now() + file.originalname.match(/\..*$/)[0])
+      (file.filename = "image" + "-" + Date.now() + file.originalname)
     );
   },
 });
