@@ -23,7 +23,7 @@ const ProfilePhotoUpdateCtrl = expressAsyncHandler(async (req, res) => {
         new: true,
       }
     );
-    console.log(uploadImg);
+    // console.log(uploadImg);
     //remove the save images
     fs.unlinkSync(localpath);
     res.json({
