@@ -23,7 +23,7 @@ const ForgetPasswordCtrl = expressAsyncHandler(async (req, res) => {
     };
 
     await sgMail.send(msg);
-    res.json(msg);
+    res.send("OTP Successfully sent!");
   } catch (error) {
     res.json(error);
   }
