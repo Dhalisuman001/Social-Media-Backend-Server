@@ -5,14 +5,14 @@ const validId = require("../../utils/isValid")
 // deactivate account
 const DeactivationCtrl = expressAsyncHandler(async(req, res) => {
     const myId = req.user._id;
-    const email = req.body.email;
+    // const email = req.body.email;
     const pass = req.body.password;
 
     validId(myId)
 
     const user = await User.findById(myId)
 
-    if(user.email !== email) throw new Error("Incorrect Email")
+    // if(user.email !== email) throw new Error("Incorrect Email")
 
     const checkPass = await user.CheckPassword(pass)
 
