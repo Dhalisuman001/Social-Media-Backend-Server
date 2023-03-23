@@ -66,7 +66,7 @@ UserRoute.route("/new-password").post(NewPassCtrl);
 //verify email route
 UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
 //delete user route
-UserRoute.route("/delete").delete(AuthHandel, DeleteUserCtrl);
+UserRoute.route("/deleteduser").put(AuthHandel, DeleteUserCtrl);
 
 UserRoute.route("/update-password").put(AuthHandel, updatePassword);
 
