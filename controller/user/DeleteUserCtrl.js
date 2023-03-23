@@ -7,9 +7,9 @@ const DeleteUserCtrl = expressAsyncHandler(async (req, res) => {
     // const email = req.body.email;
     const pass = req.body.password;
 
-    validId(myId)
+    validId(id)
 
-    const user = await User.findById(myId)
+    const user = await User.findById(id)
 
     // if(user.email !== email) throw new Error("Incorrect Email")
 

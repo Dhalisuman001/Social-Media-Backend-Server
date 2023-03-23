@@ -30,9 +30,9 @@ const DeactivationCtrl = expressAsyncHandler(async(req, res) => {
             }
         )
 
-        res.json(deactivate)
+        res.json({ message: "User is deactivated", deactivate: deactivate })
     } catch (error) {
-        res.json("Error is this: ", error)
+        res.json(error)
     }
 })
 
