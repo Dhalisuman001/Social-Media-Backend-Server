@@ -10,24 +10,29 @@ const ProfilePhotoUpdateCtrl = expressAsyncHandler(async (req, res) => {
 
   ////get the path to img
   const localpath = `public/images/profile/${req.file.filename}`;
+
   //   upload to cloudinary
   const uploadImg = await cloudinaryUploadImg(localpath);
-  const user = await User.findByIdAndUpdate(
-    id,
-    {
-      profilePhoto: uploadImg.url,
-    },
-    {
-      new: true,
-    }
-  );
-  console.log(uploadImg);
-  //remove the save images
-  fs.unlinkSync(localpath);
-  res.json({
-    localpath,
-    user,
-  });
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      {
+        profilePhoto: uploadImg.url,
+      },
+      {
+        new: true,
+      }
+    );
+    console.log(uploadImg);
+    //remove the save images
+    fs.unlinkSync(localpath);
+    res.json({
+      localpath,
+      user,
+    });
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 module.exports = ProfilePhotoUpdateCtrl;
