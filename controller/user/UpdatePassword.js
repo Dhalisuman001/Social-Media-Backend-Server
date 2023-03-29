@@ -13,7 +13,7 @@ const updatePassword = expressAsyncHandler(async (req, res) => {
         res.json({ message: "Password is updated", user: updatedUser });
     } 
     else {
-        throw new Error(`Old password is not matched`);
+        res.json({ message: "Old password is not matched" });
     }
 
 });
