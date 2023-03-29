@@ -1,9 +1,10 @@
 const multer = require("multer");
-// const path = require("path");
+const path = require("path");
 
 //Post
 const multerDiskStorage = multer.diskStorage({
-  destination: "public/images/profile",
+  destination: "public/images/post",
+
   filename: function (req, file, cb) {
     cb(
       null,
