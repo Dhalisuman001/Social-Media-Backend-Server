@@ -50,6 +50,10 @@ const PostSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
+    comment: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
   },
   {
     toJSON: {
@@ -65,7 +69,7 @@ const PostSchema = mongoose.Schema(
 );
 
 //Populate Comment
-PostSchema.virtual("Comment", {
+PostSchema.virtual("Comments", {
   ref: "Comment",
   foreignField: "post",
   localField: "_id",
