@@ -37,10 +37,10 @@ UserRoute.route("/register").post(RegisterCtrl);
 UserRoute.route("/login").post(LoginCtrl);
 
 // Send otp to email for verification
-UserRoute.route("/verified").get(AuthHandel, VerifyEmailOTPCtrl);
+UserRoute.route("/verification").post(AuthHandel, VerifyEmailOTPCtrl);
 
 // Verify user email
-UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
+UserRoute.route("/verify-email").get(AuthHandel, EmailVerificationCtrl);
 
 // Fetch all users
 UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
