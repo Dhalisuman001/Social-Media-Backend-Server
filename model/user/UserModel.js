@@ -119,6 +119,20 @@ UserSchema.virtual("Post", {
   localField: "_id",
 });
 
+// to populate followers for each user
+UserSchema.virtual("Followers", {
+  ref: "User",
+  foreignField: "_id",
+  localField: "followers",
+})
+
+// to populate following of each user
+UserSchema.virtual("Following", {
+  ref: "User",
+  foreignField: "_id",
+  localField: "following",
+})
+
 // encrypt password before save --Hooks
 UserSchema.pre("save", async function (next) {
   // Only run this function if password was moddified (not on other update functions)

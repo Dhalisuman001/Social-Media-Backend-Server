@@ -1,19 +1,21 @@
-const expressAsyncHandler = require("express-async-handler")
-const Post = require("../../model/post/PostModel")
-const validId = require("../../utils/isValid")
+const expressAsyncHandler = require("express-async-handler");
+const Post = require("../../model/post/PostModel");
+const validId = require("../../utils/isValid");
 
-const FetchPostCtrl = expressAsyncHandler(async(req, res) => {
-    const id = req.params.id;
+const FetchPostCtrl = expressAsyncHandler(async (req, res) => {
+  const id = req.params.id;
 
-    validId(id)
+  validId(id);
 
-    try {
-        const post = await Post.findById(id).populate("Comments")
-        res.json(post)
-    } catch (error) {
-        res.status(500)
-        res.json(error)
-    }
-})
+  try {
+    const post = await Post.findById(id)
+      .populate("Comments")
+      .populate("LikedBy");
+    res.json(post);
+  } catch (error) {
+    res.status(500);
+    res.json(error);
+  }
+});
 
 module.exports = FetchPostCtrl;

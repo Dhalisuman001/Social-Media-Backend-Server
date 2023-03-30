@@ -68,12 +68,26 @@ const PostSchema = mongoose.Schema(
   }
 );
 
-//Populate Comment
+// Populate Comment
 PostSchema.virtual("Comments", {
   ref: "Comment",
   foreignField: "post",
   localField: "_id",
 });
+
+// Populate the Viewers
+PostSchema.virtual("ViewedBy", {
+  ref: "User",
+  foreignField: "_id",
+  localField: "viewedBy",
+})
+
+// Populate the Likers
+PostSchema.virtual("LikedBy", {
+  ref: "User",
+  foreignField: "_id",
+  localField: "likedBy",
+})
 
 // PostSchema.pre("save", function (next) {
 //   let caption = this.caption.replace(/\s/g, "");

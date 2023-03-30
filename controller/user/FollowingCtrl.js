@@ -17,28 +17,56 @@ const FollowingCtrl = expressAsyncHandler(async (req, res) => {
     (u) => u.toString() === myId.toString()
   );
 
-  if (isFollowing) throw new Error("You already following this user!");
+  // if (isFollowing) throw new Error("You already following this user!");
 
-  await User.findByIdAndUpdate(
-    Id,
-    {
-      $push: { followers: myId },
-    },
-    { new: true }
-  );
-  await User.findByIdAndUpdate(
-    myId,
-    {
-      $push: { following: Id },
-    },
-    { new: true }
-  );
+  if (isFollowing) {
 
-  res.json({
-    message: "Successfully Followed",
-    My_Id: myId,
-    Following_Id: Id,
-  });
+    await User.findByIdAndUpdate(
+      Id,
+      {
+        $pull: { followers: myId },
+      },
+      { new: true }
+    );
+
+    await User.findByIdAndUpdate(
+      myId,
+      {
+        $pull: { following: Id },
+      },
+      { new: true }
+    );
+
+    res.json({
+      message: "Unfollowed Successfully",
+      My_Id: myId,
+      Followind_Id: Id,
+    });
+
+  } else {
+
+    await User.findByIdAndUpdate(
+      Id,
+      {
+        $push: { followers: myId },
+      },
+      { new: true }
+    );
+    await User.findByIdAndUpdate(
+      myId,
+      {
+        $push: { following: Id },
+      },
+      { new: true }
+    );
+
+    res.json({
+      message: "Successfully Followed",
+      My_Id: myId,
+      Following_Id: Id,
+    });
+    
+  }
 });
 
 module.exports = FollowingCtrl;
