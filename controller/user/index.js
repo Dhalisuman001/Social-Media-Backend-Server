@@ -4,7 +4,6 @@ const FetchProfileCtrl = require("./FetchProfileCtrl");
 const FetchUserCtrl = require("./FetchUserCtrl");
 const FetchUsersCtrl = require("./FetchUsersCtrl");
 const FollowingCtrl = require("./FollowingCtrl");
-const UnfollowingCtrl = require("./UnfollowingCtrl");
 const LoginCtrl = require("./LoginCtrl");
 const ProfilePhotoUpdateCtrl = require("./ProfilePhotoUpdateCtrl");
 const RegisterCtrl = require("./RegisterCtrl");
@@ -17,6 +16,8 @@ const DeleteUserCtrl = require("./DeleteUserCtrl");
 const updatePassword = require("./UpdatePassword");
 const DeactivationCtrl = require("./IsActiveCtrl");
 const NewPassCtrl = require("./NewPassCtrl");
+const FetchFollowersCtrl = require("./FetchFollowersCtrl");
+const FetchFollowingCtrl = require("./FetchFollowingCtrl");
 
 module.exports = {
   ChangePassOTP,
@@ -25,7 +26,6 @@ module.exports = {
   FetchUserCtrl,
   FetchUsersCtrl,
   FollowingCtrl,
-  UnfollowingCtrl,
   LoginCtrl,
   ProfilePhotoUpdateCtrl,
   RegisterCtrl,
@@ -38,4 +38,6 @@ module.exports = {
   updatePassword,
   DeactivationCtrl,
   NewPassCtrl,
+  FetchFollowersCtrl,
+  FetchFollowingCtrl
 };

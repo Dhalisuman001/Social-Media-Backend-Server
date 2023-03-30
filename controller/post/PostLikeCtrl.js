@@ -3,12 +3,12 @@ const Post = require("../../model/post/PostModel");
 const validId = require("../../utils/isValid");
 
 const PostLikeCtrl = expressAsyncHandler(async (req, res) => {
-  const id = req.user._id;
-  const PostId = req.body.id;
+  const { id } = req.user;
+  const { postId } = req.body;
 
-  validId(PostId);
+  validId(postId);
 
-  const post = await Post.findById(PostId);
+  const post = await Post.findById(postId);
 
   if (!post) throw new Error("Post does not exist!");
 
@@ -16,7 +16,7 @@ const PostLikeCtrl = expressAsyncHandler(async (req, res) => {
 
   if (isLiked) {
     const post_data = await Post.findByIdAndUpdate(
-      PostId,
+      postId,
       {
         $pull: { likedBy: id },
         $inc: { likes: -1 },
@@ -29,7 +29,7 @@ const PostLikeCtrl = expressAsyncHandler(async (req, res) => {
   } else {
     //is not liked
     const post_data = await Post.findByIdAndUpdate(
-      PostId,
+      postId,
       {
         $push: { likedBy: id },
         $inc: { likes: 1 },

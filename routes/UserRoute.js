@@ -10,7 +10,6 @@ const {
   BlockUserCtrl,
   UnblockUserCtrl,
   FollowingCtrl,
-  UnfollowingCtrl,
   ForgetPasswordCtrl,
   ChangePassOTP,
   VerifyEmailOTPCtrl,
@@ -19,6 +18,8 @@ const {
   updatePassword,
   DeactivationCtrl,
   NewPassCtrl,
+  FetchFollowersCtrl,
+  FetchFollowingCtrl,
 } = require("../controller/user");
 
 const {
@@ -29,47 +30,68 @@ const {
 
 // ! ROUTES START FROM HERE
 
-//user register route
+// User register
 UserRoute.route("/register").post(RegisterCtrl);
-//user login route
+
+// User login
 UserRoute.route("/login").post(LoginCtrl);
-//user email otp verify route
+
+// Send otp to email for verification
 UserRoute.route("/verified").get(AuthHandel, VerifyEmailOTPCtrl);
-//fetch all users route
+
+// Verify user email
+UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
+
+// Fetch all users
 UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
-//fetch user profile route
+
+// Fetch user profile
 UserRoute.route("/profile").get(AuthHandel, FetchProfileCtrl);
-//fetch single user route
+
+// Fetch single user other than me
 UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
-//user update route
+
+// User update personal info
 UserRoute.route("/update").post(AuthHandel, UpdateUserCtrl);
+
 // will be change
 UserRoute.route("/avatar-update").put(
   AuthHandel,
   PhotoUpload.single("image"),
   ProfilePhotoUpdateCtrl
 );
-//block user route
+
+// Admin block user
 UserRoute.route("/block/:id").put(AuthHandel, BlockUserCtrl);
-//unblock user route
+
+// Admin unblock user
 UserRoute.route("/unblock/:id").put(AuthHandel, UnblockUserCtrl);
-//following user route
+
+// follow/unfollow another user
 UserRoute.route("/follow").post(AuthHandel, FollowingCtrl);
-//unfollowing user route
-UserRoute.route("/unfollow").post(AuthHandel, UnfollowingCtrl);
-//forget password route
+
+// Request for Changing Password
 UserRoute.route("/forget-password").post(ForgetPasswordCtrl);
 
+// Verify Otp for changing password request 
 UserRoute.route("/change-password").post(ChangePassOTP);
 
+// Set New Password
 UserRoute.route("/new-password").post(NewPassCtrl);
-//verify email route
-UserRoute.route("/verify-email").post(AuthHandel, EmailVerificationCtrl);
-//delete user route
+
+// Delete user profile
 UserRoute.route("/deleteduser").put(AuthHandel, DeleteUserCtrl);
 
+// Update Password
 UserRoute.route("/update-password").put(AuthHandel, updatePassword);
 
+//Deactivate user profile
 UserRoute.route("/inactive").put(AuthHandel, DeactivationCtrl);
+
+// Fetch myFollowers
+UserRoute.route("/profile/my-followers").get(AuthHandel, FetchFollowersCtrl);
+
+// Fetch myFollowing
+UserRoute.route("/profile/my-following").get(AuthHandel, FetchFollowingCtrl);
 
 module.exports = UserRoute;

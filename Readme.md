@@ -22,7 +22,9 @@ npm i nodemon --save-dev
 -> Location
 -> Comment like
 -> Notifications
-
+-> Commenters populate
+-> Comment likers populate (least priority)
+-> Repliers populate (least priority)
 # Email
 
 socialmediahelp.11919@gmail.com
