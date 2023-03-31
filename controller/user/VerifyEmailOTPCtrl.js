@@ -26,7 +26,7 @@ const VerifyEmailOTPCtrl = expressAsyncHandler(async (req, res) => {
   //   user.new = true;
   await user.save();
 
-  res.json(user);
+  res.json({msg: "Verification Success", user});
 });
 
 module.exports = VerifyEmailOTPCtrl;
