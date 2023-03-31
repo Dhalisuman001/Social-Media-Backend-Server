@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const CommentSchema = mongoose.Schema(
+const ReplySchema = mongoose.Schema(
   {
-    post: {
+    comment: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Post",
-      required: [true, "Post is required"],
+      ref: "Comment",
+      required: [true, "Comment is required"],
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -28,10 +28,6 @@ const CommentSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    replies: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Reply",
-    },
   },
   {
     toJSON: {
@@ -44,19 +40,19 @@ const CommentSchema = mongoose.Schema(
   }
 );
 
-// Comment Likers
-CommentSchema.virtual("CommentLikers", {
+// Populate who replies to the comment
+ReplySchema.virtual("Replyers", {
   ref: "User",
-  localField: "likedBy",
-  foreignField: "_id"
+  localField: "user",
+  foreignField: "_id",
+});
+
+// Reply Likers
+ReplySchema.virtual("ReplyLikers", {
+    ref: "User",
+    localField: "likedBy",
+    foreignField: "_id",
 })
 
-// Replies to the comment
-CommentSchema.virtual("Replies", {
-  ref: "User",
-  localField: "_id",
-  foreignField: "comment",
-})
-
-const Comment = mongoose.model("Comment", CommentSchema);
-module.exports = Comment;
+const Reply = mongoose.model("Reply", ReplySchema);
+module.exports = Reply;

@@ -71,22 +71,22 @@ const PostSchema = mongoose.Schema(
 // Populate Comment
 PostSchema.virtual("Comments", {
   ref: "Comment",
-  foreignField: "post",
   localField: "_id",
+  foreignField: "post",
 });
 
 // Populate the Viewers
 PostSchema.virtual("ViewedBy", {
   ref: "User",
-  foreignField: "_id",
   localField: "viewedBy",
+  foreignField: "_id",
 })
 
 // Populate the Likers
 PostSchema.virtual("LikedBy", {
   ref: "User",
-  foreignField: "_id",
   localField: "likedBy",
+  foreignField: "_id",
 })
 
 // PostSchema.pre("save", function (next) {

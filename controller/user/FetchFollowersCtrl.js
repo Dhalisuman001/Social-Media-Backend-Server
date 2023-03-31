@@ -3,11 +3,11 @@ const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
 const FetchFollowersCtrl = expressAsyncHandler(async (req, res) => {
-  const userId = req.user._id;
-  validId(userId);
+  const id = req.body.id ? req.body.id : req.user._id;
+  validId(id);
 
   try {
-    const profile = await User.findById(userId).populate("Followers");
+    const profile = await User.findById(id).populate("Followers");
     if (profile.followers.length > 0) res.json(profile.Followers);
     else res.send("No followers yet");
   } catch (error) {

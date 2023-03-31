@@ -3,11 +3,11 @@ const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
 const FetchFollowingCtrl = expressAsyncHandler(async (req, res) => {
-  const userId = req.user._id;
-  validId(userId);
+  const id = req.body.id ? req.body.id : req.user._id;
+  validId(id);
 
   try {
-    const profile = await User.findById(userId).populate("Following");
+    const profile = await User.findById(id).populate("Following");
     if (profile.following.length > 0) res.json(profile.Following);
     else res.send("Not following anyone yet.");
   } catch (error) {
