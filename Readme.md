@@ -22,9 +22,8 @@ npm i nodemon --save-dev
 -> Location
 -> Comment like
 -> Notifications
--> Commenters populate
--> Comment likers populate (least priority)
--> Repliers populate (least priority)
+-> my post(author, likedby, comment)
+
 # Email
 
 socialmediahelp.11919@gmail.com

@@ -46,7 +46,7 @@ UserRoute.route("/verify-email").get(AuthHandel, EmailVerificationCtrl);
 UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
 
 // Fetch user profile
-UserRoute.route("/profile").get(AuthHandel, FetchProfileCtrl);
+UserRoute.route("/profile").post(AuthHandel, FetchProfileCtrl);
 
 // Fetch single user other than me
 UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);
@@ -89,9 +89,9 @@ UserRoute.route("/update-password").put(AuthHandel, updatePassword);
 UserRoute.route("/inactive").put(AuthHandel, DeactivationCtrl);
 
 // Fetch myFollowers
-UserRoute.route("/profile/my-followers").get(AuthHandel, FetchFollowersCtrl);
+UserRoute.route("/profile/my-followers").post(AuthHandel, FetchFollowersCtrl);
 
 // Fetch myFollowing
-UserRoute.route("/profile/my-following").get(AuthHandel, FetchFollowingCtrl);
+UserRoute.route("/profile/my-following").post(AuthHandel, FetchFollowingCtrl);
 
 module.exports = UserRoute;

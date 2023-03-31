@@ -8,7 +8,9 @@ exports.FetchSingleCommentCtrl = expressAsyncHandler(async (req, res) => {
   validId(commentId);
 
   try {
-    const comment = await Comment.findById(commentId);
+    const comment = await Comment.findById(commentId)
+      .populate("user")
+      .populate("Replies");
     res.json(comment);
   } catch (error) {
     res.status(500);
