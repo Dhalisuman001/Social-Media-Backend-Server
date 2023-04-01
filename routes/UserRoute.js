@@ -46,7 +46,7 @@ UserRoute.route("/verify-email").get(AuthHandel, EmailVerificationCtrl);
 UserRoute.route("/").get(AuthHandel, FetchUsersCtrl);
 
 // Fetch user profile
-UserRoute.route("/profile").post(AuthHandel, FetchProfileCtrl);
+UserRoute.route("/profile").get(AuthHandel, FetchProfileCtrl);
 
 // Fetch single user other than me
 UserRoute.route("/:id").get(AuthHandel, FetchUserCtrl);

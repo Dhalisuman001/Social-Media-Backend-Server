@@ -3,8 +3,7 @@ const User = require("../../model/user/UserModel");
 const validId = require("../../utils/isValid");
 
 const FetchProfileCtrl = expressAsyncHandler(async (req, res) => {
-  const id = req.body.id ? req.body.id : req.user._id;
-  validId(id);
+  const { id } = req.user;
 
   try {
     const profile = await User.findById(id).populate("Post");
