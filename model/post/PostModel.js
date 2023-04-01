@@ -89,6 +89,13 @@ PostSchema.virtual("LikedBy", {
   foreignField: "_id",
 })
 
+// Populate the Author
+PostSchema.virtual("Author", {
+  ref: "User",
+  localField: "author",
+  foreignField: "_id",
+})
+
 // PostSchema.pre("save", function (next) {
 //   let caption = this.caption.replace(/\s/g, "");
 //   console.log(caption);
