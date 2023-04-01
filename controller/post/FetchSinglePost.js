@@ -11,7 +11,7 @@ const FetchPostCtrl = expressAsyncHandler(async (req, res) => {
     const post = await Post.findById(id)
       .populate("Comments")
       .populate("LikedBy")
-      .populate("Poster");
+      .populate("Author");
     res.json(post);
   } catch (error) {
     res.status(500);
