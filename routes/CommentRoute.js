@@ -9,7 +9,7 @@ const { AuthHandel } = require("../middleware");
 const CommentRoute = require("express").Router();
 
 CommentRoute.route("/create").post(AuthHandel, CreateCommentCtrl)
-CommentRoute.route("/delete").delete(AuthHandel, DeleteCommentCtrl)
+CommentRoute.route("/delete").put(AuthHandel, DeleteCommentCtrl)
 CommentRoute.route("/update").put(AuthHandel, UpdateCommentCtrl)
 CommentRoute.route("/comments/:id").get(AuthHandel, PostCommentsCtrl)
 CommentRoute.route("/:id").get(AuthHandel, FetchSingleCommentCtrl)
