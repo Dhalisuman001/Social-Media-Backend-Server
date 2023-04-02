@@ -3,7 +3,7 @@ const Post = require("../../model/post/PostModel");
 const validId = require("../../utils/isValid");
 
 const FetchPostCtrl = expressAsyncHandler(async (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
 
   validId(id);
 
@@ -11,7 +11,7 @@ const FetchPostCtrl = expressAsyncHandler(async (req, res) => {
     const post = await Post.findById(id)
       .populate("Comments")
       .populate("LikedBy")
-      .populate("Author");
+      .populate("author");
     res.json(post);
   } catch (error) {
     res.status(500);

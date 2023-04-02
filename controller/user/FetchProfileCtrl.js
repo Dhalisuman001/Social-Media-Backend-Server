@@ -4,6 +4,7 @@ const validId = require("../../utils/isValid");
 
 const FetchProfileCtrl = expressAsyncHandler(async (req, res) => {
   const { id } = req.user;
+  validId(id);
 
   try {
     const profile = await User.findById(id).populate("Post");
