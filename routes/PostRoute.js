@@ -21,6 +21,6 @@ PostRoute.route("/my-posts").get(AuthHandel, MyPostsCtrl)
 PostRoute.route("/posts-of/:id").get(AuthHandel, UserPostsCtrl)
 PostRoute.route("/:id").get(AuthHandel, FetchPostCtrl);
 PostRoute.route("/update").put(AuthHandel, updatePostCtrl);
-PostRoute.route("/delete").delete(AuthHandel, DeletePostCtrl);
+PostRoute.route("/delete/:id").delete(AuthHandel, DeletePostCtrl);
 
 module.exports = PostRoute;

@@ -5,7 +5,7 @@ const validId = require("../../utils/isValid");
 const DeletePostCtrl = expressAsyncHandler(async (req, res) => {
 
     const id = req.user._id;
-    const PostId = req.body.id;
+    const PostId = req.params.id;
 
     validId(PostId);
 
