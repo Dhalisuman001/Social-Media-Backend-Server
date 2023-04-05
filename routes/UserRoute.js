@@ -21,6 +21,8 @@ const {
   FetchFollowersCtrl,
   FetchFollowingCtrl,
 } = require("../controller/user");
+const UpdateEmailCtrl = require("../controller/user/UpdateEmail");
+const VerifyNewEmailCtrl = require("../controller/user/VerifyNewEmail");
 
 const {
   AuthHandel,
@@ -66,6 +68,12 @@ UserRoute.route("/block/:id").put(AuthHandel, BlockUserCtrl);
 
 // Admin unblock user
 UserRoute.route("/unblock/:id").put(AuthHandel, UnblockUserCtrl);
+
+// Update Email
+UserRoute.route("/update-email").post(AuthHandel, UpdateEmailCtrl)
+
+// Verify Updated Email
+UserRoute.route("/verify-newmail").put(AuthHandel, VerifyNewEmailCtrl)
 
 // follow/unfollow another user
 UserRoute.route("/follow").post(AuthHandel, FollowingCtrl);
