@@ -13,21 +13,25 @@ const VerifyNewEmailCtrl = expressAsyncHandler(async (req, res) => {
 
   const hashedToken = crypto.createHash("sha256").update(otp).digest("hex");
 
-  if (
-    user.emailVerificationOTP !== hashedToken ||
-    user.emailVerificationOTPExpire < new Date()
-  ) {
-    throw new Error("OTP has expiredddd!");
+  try {
+    if (
+      user.emailVerificationOTP !== hashedToken ||
+      user.emailVerificationOTPExpire < new Date()
+    ) {
+      throw new Error("OTP has expiredddd!");
+    }
+
+    user.email = newEmail;
+    user.isVerified = true;
+    user.emailVerificationOTP = undefined;
+    user.emailVerificationOTPExpire = undefined;
+    //   user.new = true;
+    await user.save();
+
+    res.json({ msg: "Email Updated Successfully", user });
+  } catch (error) {
+    res.json({ msg: "Email Updation Unsuccessful", error });
   }
-
-  user.email = newEmail;
-  user.isVerified = true;
-  user.emailVerificationOTP = undefined;
-  user.emailVerificationOTPExpire = undefined;
-  //   user.new = true;
-  await user.save();
-
-  res.json({msg: "Verification Success", user});
 });
 
 module.exports = VerifyNewEmailCtrl;
