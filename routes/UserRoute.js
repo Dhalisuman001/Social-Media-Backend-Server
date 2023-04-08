@@ -20,6 +20,7 @@ const {
   NewPassCtrl,
   FetchFollowersCtrl,
   FetchFollowingCtrl,
+  FetchMyPost,
 } = require("../controller/user");
 const UpdateEmailCtrl = require("../controller/user/UpdateEmail");
 const VerifyNewEmailCtrl = require("../controller/user/VerifyNewEmail");
@@ -70,10 +71,10 @@ UserRoute.route("/block/:id").put(AuthHandel, BlockUserCtrl);
 UserRoute.route("/unblock/:id").put(AuthHandel, UnblockUserCtrl);
 
 // Update Email
-UserRoute.route("/update-email").post(AuthHandel, UpdateEmailCtrl)
+UserRoute.route("/update-email").post(AuthHandel, UpdateEmailCtrl);
 
 // Verify Updated Email
-UserRoute.route("/verify-newmail").put(AuthHandel, VerifyNewEmailCtrl)
+UserRoute.route("/verify-newmail").put(AuthHandel, VerifyNewEmailCtrl);
 
 // follow/unfollow another user
 UserRoute.route("/follow").post(AuthHandel, FollowingCtrl);
@@ -81,7 +82,7 @@ UserRoute.route("/follow").post(AuthHandel, FollowingCtrl);
 // Request for Changing Password
 UserRoute.route("/forget-password").post(ForgetPasswordCtrl);
 
-// Verify Otp for changing password request 
+// Verify Otp for changing password request
 UserRoute.route("/change-password").post(ChangePassOTP);
 
 // Set New Password
@@ -101,5 +102,8 @@ UserRoute.route("/profile/my-followers").post(AuthHandel, FetchFollowersCtrl);
 
 // Fetch myFollowing
 UserRoute.route("/profile/my-following").post(AuthHandel, FetchFollowingCtrl);
+
+// Fetch myFollowing
+UserRoute.route("/profile/my-post").get(AuthHandel, FetchMyPost);
 
 module.exports = UserRoute;

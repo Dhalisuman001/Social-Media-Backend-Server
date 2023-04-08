@@ -18,6 +18,7 @@ const DeactivationCtrl = require("./IsActiveCtrl");
 const NewPassCtrl = require("./NewPassCtrl");
 const FetchFollowersCtrl = require("./FetchFollowersCtrl");
 const FetchFollowingCtrl = require("./FetchFollowingCtrl");
+const FetchMyPost = require("./FetchMyPost");
 
 module.exports = {
   ChangePassOTP,
@@ -39,5 +40,6 @@ module.exports = {
   DeactivationCtrl,
   NewPassCtrl,
   FetchFollowersCtrl,
-  FetchFollowingCtrl
+  FetchFollowingCtrl,
+  FetchMyPost,
 };
