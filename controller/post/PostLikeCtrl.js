@@ -24,7 +24,10 @@ const PostLikeCtrl = expressAsyncHandler(async (req, res) => {
       {
         new: true,
       }
-    );
+    )
+      .populate("author")
+      .populate("LikedBy")
+      .populate("Comments");
     res.json(post_data);
   } else {
     //is not liked
@@ -37,7 +40,10 @@ const PostLikeCtrl = expressAsyncHandler(async (req, res) => {
       {
         new: true,
       }
-    );
+    )
+      .populate("author")
+      .populate("LikedBy")
+      .populate("Comments");
     res.json(post_data);
   }
 });
