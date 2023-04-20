@@ -7,7 +7,7 @@ const FetchAllPostsCtrl = expressAsyncHandler(async (req, res) => {
     const posts = await Post.find();
     const AllId = posts?.map((post) => post._id).reverse();
     if (page > 0) {
-      res.json(AllId.slice((page - 1) * 10, page * 10));
+      res.json(AllId.slice(0, page * 10));
     } else {
       res.json(AllId);
     }
