@@ -16,7 +16,7 @@ const { AuthHandel } = require("../middleware");
 const uploadPostPhoto = require("../middleware/upload/PostPhoto");
 
 PostRoute.route("/create").post(AuthHandel, uploadPostPhoto, PostCreateCtrl);
-PostRoute.route("/all-post/:page").get(AuthHandel, FetchAllPostsCtrl);
+PostRoute.route("/all-post").get(AuthHandel, FetchAllPostsCtrl);
 PostRoute.route("/like").put(AuthHandel, PostLikeCtrl);
 PostRoute.route("/").get(AuthHandel, FetchPostsCtrl);
 PostRoute.route("/my-posts").get(AuthHandel, MyPostsCtrl);

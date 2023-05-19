@@ -8,8 +8,8 @@ const FetchMyPost = expressAsyncHandler(async (req, res) => {
 
   try {
     const profile = await User.findById(id).populate("Post");
-
-    res.json(profile?.Post);
+    const AllId = profile?.Post?.map((post) => post._id).reverse();
+    res.json(AllId);
   } catch (error) {
     res.status(404);
     throw new Error("Profile does not exist");
