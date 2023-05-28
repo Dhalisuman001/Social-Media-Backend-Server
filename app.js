@@ -6,6 +6,7 @@ const { notFound, errorHandler } = require("./middleware");
 const PostRoute = require("./routes/PostRoute");
 const CommentRoute = require("./routes/CommentRoute");
 const StoryRoute = require("./routes/StoryRoute");
+const ChatRoute = require("./routes/ChatRoute");
 const app = express();
 
 // Db Connection
@@ -24,6 +25,8 @@ app.use("/api/post/", PostRoute);
 app.use("/api/comment/", CommentRoute);
 //Story routes
 app.use("/api/story/", StoryRoute);
+//Chat routes
+app.use("/api/chat/", ChatRoute);
 
 // Handeling Error
 app.use(notFound);
