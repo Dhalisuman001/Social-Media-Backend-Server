@@ -7,6 +7,7 @@ const PostRoute = require("./routes/PostRoute");
 const CommentRoute = require("./routes/CommentRoute");
 const StoryRoute = require("./routes/StoryRoute");
 const ChatRoute = require("./routes/ChatRoute");
+const MessageRoute = require("./routes/MessageRoute");
 const app = express();
 
 // Db Connection
@@ -27,6 +28,8 @@ app.use("/api/comment/", CommentRoute);
 app.use("/api/story/", StoryRoute);
 //Chat routes
 app.use("/api/chat/", ChatRoute);
+//Messages routes
+app.use("/api/message/", MessageRoute);
 
 // Handeling Error
 app.use(notFound);
