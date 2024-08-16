@@ -1,38 +1,29 @@
 {
-  "name": "social-server",
-  "version": "1.0.0",
-  "description": "server for social media",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
-  "keywords": [
-    "server",
-    "node.js",
-    "mongodb"
-  ],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@sendgrid/mail": "^7.7.0",
-    "bcrypt": "^5.1.0",
-    "cloudinary": "^1.34.0",
-    "cors": "^2.8.5",
-    "crypto": "^1.0.1",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "express-async-handler": "^1.2.0",
-    "express-validator": "^6.15.0",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.9.2",
-    "multer": "^1.4.5-lts.1",
-    "npm": "^9.6.2",
-    "otp-generator": "^4.0.1",
-    "sharp": "^0.31.3",
-    "validator": "^13.9.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
-  }
+	"name": "backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development nodemon server.js",
+		"start": "cross-env NODE_ENV=production node server.js"
+	},
+	"type": "module",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"cloudinary": "^1.40.0",
+		"cookie-parser": "^1.4.6",
+		"cron": "^3.1.6",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"jsonwebtoken": "^9.0.1",
+		"mongoose": "^7.4.0",
+		"socket.io": "^4.7.2"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"nodemon": "^3.0.1"
+	}
 }
