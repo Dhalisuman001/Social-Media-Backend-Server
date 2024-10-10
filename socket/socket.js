@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: "https://v2-social-media.netlify.app/",
+		origin: "https://v2-social-media.netlify.app",
 		methods: ["GET", "POST"],
 	},
 });
